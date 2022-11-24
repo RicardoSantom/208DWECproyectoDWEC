@@ -1,0 +1,3 @@
+<?php
+$cadena ="Prueba Xdebug";
+
