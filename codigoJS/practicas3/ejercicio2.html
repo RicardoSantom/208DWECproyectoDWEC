@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Crea un script para cifrar mensajes al estilo César. 
+        Este cifrado consiste en desplazar cada letra del mensaje 
+        tantas posiciones como nos diga una clave. Por ejemplo, 
+        la letra A desplazada con clave 2, se convertiría en C. 
+        La aplicación pedirá al usuario un mensaje y una clave y 
+        a continuación mostrará al usuario el mensaje cifrado el 
+        cual se generará desplazando los caracteres de la 
+        tabla Unicode el número que indique la clave.-->
+    <script>
+        let mensaje = prompt("Introduzca el mensaje a cifrar: ");
+        let clave = prompt("Introduzca la clave: ");
+        let claveNumerica = parseInt(clave);
+        let letra;
+        let caracter;
+        do {
+            if (mensaje == undefined || mensaje == "" || isNaN(claveNumerica)) {
+                document.write("Formato incorrecto.");
+            } else {
+                document.write(`Al aplicar la clave ${claveNumerica} al mensaje ${mensaje}, obtenemos la siguiente cadena cifrada: `);
+                for (let index = 0; index < mensaje.length; index++) {
+                    letra = mensaje.charAt(index);
+                    unicode = (letra.charCodeAt() + claveNumerica);
+                    caracter = String.fromCharCode(unicode);
+                    document.write(caracter);
+                }
+            }
+
+        } while (mensaje != undefined && mensaje != "" && isNaN(!claveNumerica));
+
+    </script>
+</body>
+
+</html>

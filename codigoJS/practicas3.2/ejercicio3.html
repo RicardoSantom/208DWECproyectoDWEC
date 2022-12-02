@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Crear una función para comprobar hasta que punto la función Math.random() es realmente aleatoria.
+         La función recibirá un parámetro que por defecto será 10000. 
+         Ese, será el número de veces que generaremos números aleatorios del 1 al 10. 
+         Aunque el ejercicio se puede resolver con arrays, 
+         utiliza un mapa donde las claves serán los números del 1 al 10 y los valores, el número de veces que aparece.-->
+    <script>
+        const LIMITE = 10000;
+        let aleatorio,iValor;
+        let arrayAleatorios = [];
+        let mapaAleatorios = new Map();
+        for (let index = 0; index < LIMITE; index++) {
+            aleatorio = parseInt(Math.random() * 10+1);
+            arrayAleatorios.push(aleatorio);
+        }
+        function comprobarAleatorio(LIMITE) {
+
+            for (const valor of arrayAleatorios) {
+                mapaAleatorios.set(valor, 0);
+            }
+            for (const valorAcumulado of arrayAleatorios) {
+                iValor = mapaAleatorios.get(valorAcumulado);
+                iValor = mapaAleatorios.set(valorAcumulado, iValor + 1);
+            }
+
+            return mapaAleatorios;
+
+        }
+        let mapaImpreso = comprobarAleatorio(arrayAleatorios);
+        mapaImpreso.forEach((value,key)=>{
+            console.log(`${key} = ${value}`);
+        });
+    </script>
+</body>
+
+</html>

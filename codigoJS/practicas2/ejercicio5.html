@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .secundario {
+            width: 50px;
+            height: 50px;
+            position:fixed;
+        }
+        #principal{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Crea una aplicación web que muestre 2000 cuadrados de color aleatorio de 50x50 píxeles. 
+    Su posición en la pantalla será también aleatoria-->
+    <script>
+        document.write("<div id=principal>")
+        for (let index = 0; index < 2000; index++) {
+            let rojo = parseInt(Math.random() * 256);
+            let verde = parseInt(Math.random() * 256);
+            let azul = parseInt(Math.random() * 256);
+            let top=parseInt(Math.random() * 100);
+            let left=parseInt(Math.random() * 100);
+            document.write(`<div id='fondo'` + `class='secundario'`+
+                `style='background-color:rgb(${rojo},${verde},${azul});top:${top}%;left:${left}%;'>` +
+                `</div>`);
+        }
+        document.write("</div>");
+    </script>
+</body>
+</html>

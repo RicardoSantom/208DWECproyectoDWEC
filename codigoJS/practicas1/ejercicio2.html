@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Ricardo Santiago Tomé">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../../../webroot/images/favicon-96x96.png">
+        <link rel="stylesheet" href="../../webroot/css/estilos.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Ejercicio 2 práctrica 1</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <!--Crea un script, que pida al usuario un número. Indicar al usuario si lo que ha introducido, es un número o no, y si es un número, decir si es par o no y si es primo o no.-->
+        <header>
+            <h1>Desarrollo Aplicaciones Web Entorno Cliente</h1>
+            <h2>Ejercicios prácticos</h2>
+            <h3>Ejercicio 2</h3>
+        </header>
+        <main>
+            <article>
+                <h3>Crea un script, que pida al usuario un número. Indicar al usuario si lo que ha introducido, es un número o no, y si es un número, decir si es par o no y si es primo o no</h3><br>
+            </article>
+            <script>
+                let numero = prompt("Introduzca un número, por favor.");
+                if (isNaN(numero) | numero === "") {
+                    document.write("<br>El carácter introducido no es un número");
+                } else {
+                    if (numero == 2) {
+                        document.write('<br>El número ' + numero + ' es el único número par y primo a la vez.');
+                    } else {
+                        if ((numero % 2) === 0) {
+                            document.write("<br>El número es par y no es primo.<br>");
+                        } else {
+                            document.write("<br>El número\n\
+             es impar.<br>");
+                            var esPrimo = true;
+                            for (let index = numero - 1; index > 2; index--) {
+                                if ((numero % index) != 0) {
+                                    esPrimo = true;
+                                } else {
+                                    esPrimo = false;
+                                    break;
+                                }
+                            }
+                            if (esPrimo === true) {
+                                document.write("<br>El número es primo.<br>");
+                            } else {
+                                document.write("<br>El número no es primo.<br>");
+                            }
+                        }
+                    }
+                }
+            </script>
+            <br>
+            <br>
+            <a href="../mostrarCodigo/mostrarEjercicio02.php">Enlace a código del ejercicio</a>
+        </main>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="../../../../index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="../../../doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="../../indexDWEC.html" id="enlaceSecundario" title="Enlace a Index DWEC">Index DWEC</a>
+        </footer>
+    </body>
+</html>

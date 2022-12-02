@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Crea una aplicación que pida palabras al usuario hasta que pulse el botón cancelar. Después aparecerá un menú de opciones:1)Ver primera palabra insertada2)Ver última palabra insertada3)Ver todas las palabras4)Ver la palabra más larga5)Ver la palabra más corta6)Número de palabras insertadas7)Buscar una palabra8)Borrar duplicados9)Salir-->
+    <script>
+        let palabra, menu, opcion;
+        let cadena=[];
+        do {
+            palabra = prompt("Introduzca cadena de palabras");
+            cadena.push(palabra);
+        } while (palabra != null);
+        document.write(`<h3>MENÚ:</h3>\n<br>
+            1) Ver primera palabra insertada.\n<br>
+            2) Ver última palabra insertada.\n<br>
+            3) Ver todas las palabras.\n<br>
+            4) Ver la palabra más larga.\n<br>
+            5) Ver palabra más corta\n<br>
+            6) Número de palabras insertadas\n<br>
+            7) Buscar una palabra.\n<br>
+            8) Borrar duplicados.\n<br>
+            9) Salir.`);
+        opcion = parseInt(prompt("Introduzca número de la opción"));
+        switch (opcion) {
+            case 1:
+                document.write(`<br>${cadena[0]}`);
+                break;
+
+            case 2:
+
+                break;
+            case 3:
+
+                break;
+            case 4:
+
+                break;
+            case 5:
+
+                break;
+            case 6:
+
+                break;
+            case 7:
+
+                break;
+            case 8:
+
+                break;
+            case 9:
+
+                break;
+
+            default:
+                break;
+        }
+
+    </script>
+</body>
+
+</html>

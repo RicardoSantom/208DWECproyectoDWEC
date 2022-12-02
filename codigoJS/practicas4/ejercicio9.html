@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--
+    Crea una aplicación web que sirva para validar NIFs indicando si es correcto o no.
+    Un NIF consta de una posible primera letra que puede ser X, Y o Z.
+    Si no tiene letra llevará un número. A continuación, habrá 7 números más.
+    Y finalmente una letra que cumple una formula:a.La fórmula de la letra consiste en dividir
+    los números del NIF entre 23 y tomar el resto. Para hacer este cálculo cuando el NIF empieza
+    por una letra, se cambia la letra por un número. Si la primera letra del NIF es una X,
+    se cambia por el número 0, la Y por 1 y la Z por 2. El resultado obtenido se comprueba con la siguiente tabla:  
+    -->
+    <script>
+        let dni = prompt("Introduzca su NIF");
+        const patron = /^[XYZ]?\d{5,8}[A-Z]$/;
+        let primerDigito = 0, acumulador = 0, digito = 0, digitoCaracter = 0;
+        let letraFinal = '', primeraLetra, cadenaPrimeraLetraSustituida;
+        let ultimoCaracter;
+        let cadena = 'TRWAGMYFPDXBNJZSQVHLCKE';
+
+        if (patron.test(dni)) {
+            console.log(dni);
+        }
+
+        if (patron.test(dni)) {
+            document.write(dni);
+            primeraLetra = dni.charAt(0);
+            if (isNaN(primeraLetra)) {
+                let primeraLetraMayuscula = primeraLetra.toLocaleUpperCase();
+                switch (primeraLetraMayuscula) {
+                    case 'X':
+                        primerDigito = 0;
+                        break;
+                    case 'Y':
+                        primerDigito = 1;
+                        break;
+                    case 'Z':
+                        primerDigito = 2;
+
+                    default:
+                        break;
+                }
+
+                cadenaPrimeraLetraSustituida = dni.replace(dni.charAt(0), parseInt(primerDigito));
+                document.write("cadenaPrimeraLetraSustituida=" + cadenaPrimeraLetraSustituida);
+            } else {
+                cadenaPrimeraLetraSustituida = dni;
+            }
+
+            for (let index = 0; index < dni.length-1; index++) {
+                digito = parseInt(cadenaPrimeraLetraSustituida.charAt(index));
+                acumulador = parseInt(acumulador) + digito;
+            }
+            document.write("acumulador" + acumulador);
+            digitoCaracter = acumulador % 23;
+            document.write("digitoCArater=" + digitoCaracter);
+            letraFinal = cadena.charAt(digitoCaracter);
+            document.write("letraFinal=" + letraFinal);
+            ultimoCaracter = cadenaPrimeraLetraSustituida.charAt(cadenaPrimeraLetraSustituida.length - 1);
+            document.write("ultimoCaracter=" + ultimoCaracter);
+
+            if (letraFinal == ultimoCaracter.toLocaleUpperCase()) {
+                document.write("El formato de su DNI es correcto");
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>

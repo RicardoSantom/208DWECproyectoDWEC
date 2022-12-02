@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Ricardo Santiago Tomé">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../../../webroot/images/favicon-96x96.png">
+        <link rel="stylesheet" href="../../webroot/css/estilos.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Ejercicio 1 práctrica 1</title>
+        <style>
+            article{
+                z-index: 10;
+                text-align: center;
+                color: #F5FEFF;
+                margin: 0 auto;
+                width: 100%;
+                top: 0.5rem;
+            }
+            #fondo {
+                position: fixed;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                z-index: -1;
+            }
+        </style>
+    </head>
+    <!--1.Crea una página web que muestre un color de fondo aleatorio cada vez que entremos en ella.-->
+    <body>
+        <header>
+            <h1>Bloque prácticas 1</h1>
+            <h2>Ejercicio 1</h2>
+        </header>
+        <main>
+            <article>
+                <h3>Enunciado: Crea una página web que muestre un color de fondo aleatorio cada vez que entremos en ella</h3>
+            <a href="../mostrarCodigo/mostrarEjercicio01.php">Enlace a código del ejercicio</a>
+            </article>
+            <script>
+                /**
+                 * @author Ricardo Santiago Tomé RicardoSantom en Github <https://github.com/RicardoSantom>
+                 * @since Octubre 2022
+                 * @version 0.1
+                 * @param rojo Variable de tipo entero que guardará el resultado de forzar un número aleatorio
+                 * desde un valor mínimo de 0  hasta un máximo de 256.
+                 * @param verde Variable de tipo entero que guardará el resultado de forzar un número aleatorio
+                 * desde un valor mínimo de 0  hasta un máximo de 256.
+                 * @param azul Variable de tipo entero que guardará el resultado de forzar un número aleatorio
+                 * desde un valor mínimo de 0  hasta un máximo de 256.
+                 * @description Este programa inicializa tres variables a un número aleatorio entre 0 y 255, 
+                 * coincidentes con los valores númericos de los tres colores primarios que al combinarlos
+                 * dan como resultado la mayoría de los colores RGB.
+                 * Con estos tres colores se dará color al fondo de la página web.
+                 */
+                //Inicialización de las tres variables.
+                let rojo = parseInt(Math.random() * 256);
+                let verde = parseInt(Math.random() * 256);
+                let azul = parseInt(Math.random() * 256);
+                //Impresión en pantalla de un bloque div cuyos estilos de color de fondo son resultado de 
+                //la concatenación separados por comas de los tres valores aleatorios.
+                document.write(`<div id='fondo'` +
+                        `style='background-color:rgb(${rojo},${verde},${azul})'>` +
+                        `</div>`);
+            </script>
+        </main>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="../../../../index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="../../../doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="../../indexDWEC.html" id="enlaceSecundario" title="Enlace a Index DWEC">Index DWEC</a>
+        </footer>
+    </body>
+
+</html>

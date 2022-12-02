@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Crea un script que pida al usuario su fecha de nacimiento y le diga el día de la semana 
+        en que nació y el día de la semana de todos sus cumpleaños hasta este año.-->
+    <script>
+        let anyo = prompt("Introduzca año de nacimiento");
+        let mes = prompt("Introduzca mes");
+        let dia = prompt("Introduzca dia");
+        const fechaNacimiento = new Date(anyo, mes-1, dia);
+        let numeroDia = fechaNacimiento.getDay();
+        function diaSemana(numeroDia) {
+            let diaSemana = '';
+            switch (numeroDia) {
+
+                case 0:
+                    diaSemana = "domingo"
+                    break;
+                case 1:
+                    diaSemana = "lunes"
+                    break;
+                case 2:
+                    diaSemana = "martes"
+                    break;
+                case 3:
+                    diaSemana = "miercoles"
+                    break;
+                case 4:
+                    diaSemana = "jueves"
+                    break;
+                case 5:
+                    diaSemana = "viernes"
+                    break;
+                case 6:
+                    diaSemana = "sabado"
+                    break;
+
+                default:
+                    break;
+
+            }
+            return diaSemana;
+        }
+        document.write("Usted nació un " + diaSemana(numeroDia)+ `del año ${fechaNacimiento.getFullYear()}<br>` );
+
+        let anyoPasado = fechaNacimiento.getFullYear();
+        let fechaActual = new Date();
+        let anyoActual = fechaActual.getFullYear();
+        let fechaAumentanda = new Date();
+        let diaSemanaAcumulado;
+        let contador = 0;
+
+        for (let index = anyoPasado; index < anyoActual; index++) {
+
+            contador++;
+            fechaNacimiento.setFullYear(anyoPasado + contador);
+            diaSemanaAcumulado = fechaNacimiento.getDay();
+            document.write(`En el año ${fechaNacimiento.getFullYear()} su día de nacimiento sería un `+diaSemana(diaSemanaAcumulado)+"<br>");
+
+        }
+    </script>
+</body>
+
+</html>

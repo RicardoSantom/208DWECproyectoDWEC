@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Ricardo Santiago Tomé">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../../../webroot/images/favicon-96x96.png">
+        <link rel="stylesheet" href="../../webroot/css/estilos.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Ejercicio 3 práctrica 1</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <!--Crea un script que pida la edad y el sexo de 10 personas 
+            y muestre por pantalla finalmente información de cada persona en un único mensaje.-->
+        <header>
+            <h1>Desarrollo Aplicaciones Web Entorno Cliente</h1>
+            <h2>Ejercicios prácticos</h2>
+            <h3>Ejercicio 3</h3>
+        </header>
+        <main>
+            <article>
+                <h3>Crea un script que pida la edad y el sexo de 10 personas 
+                    y muestre por pantalla finalmente información de cada persona en un único mensaje</h3><br>
+            </article>
+            <script>
+                /**
+                 * @author Ricardo Santiago Tomé RicardoSantom en Github <https://github.com/RicardoSantom>
+                 * @since Octubre 2022
+                 * @version 0.1
+                 * @param edad Variable que guarda valor numérico introducido por el usuario.
+                 * @param sexo Variable de tipo cadena que guarda como texto el valor introducido por el usuario.
+                 * @param sexoMayusculas Variable de tipo entero resultado de convertir con parseInt() la variable sexo.
+                 * @param sexoMayusculas Variable de tipo cadena resultado de convertir a mayúsculas la variable sexo.
+                 * @param index Variable de tipo entero que sirve para iterar un determinado número de veces
+                 * un bucle for.
+                 * @description Este programa html presenta una página web con dos cuadros de diálogo que se suceden preguntando
+                 * al usuario por valores para las variables edad y sexo. Guarda estos valores en las variables el número de veces
+                 * que determine el bucle for. Los valores de las variables los convierte para poder evaluarlos satisfactoriamente
+                 * en las condiciones que determinan los diferentes escenarios según se cumpla una condición, la otra , las dos o 
+                 * ninguna de las dos.
+                 * Finalmente muestra tantos mensajes por pantalla como número de usuarios introducidos y muestra los valores
+                 * de cada uno de ellos si los tuviera, si no muestra por pantalla el valor que si tiene e indica el que no, o en 
+                 * última instancia, muestra la no presencia de valores en ninguna de las variables.
+                 * */
+                let edad;
+                let sexo = '';
+                let edadEntera;
+                let sexoMayusculas = '';
+                for (let index = 0; index < 10; index++) {
+                    edad = prompt("Introduzca su edad, por favor");
+                    //Conversión a entero para evaluar con precisión.
+                    edadEntera = parseInt(edad);
+                    sexo = prompt("Díganos a que sexo pertenece, por favor");
+                    //Conversión a mayúsculas para simplificar evaluación de la cadena.
+                    sexoMayusculas = sexo.toLocaleUpperCase();
+
+                    if (edadEntera == null || edadEntera == undefined || isNaN(edadEntera) || edadEntera == '') {
+                        //Si se está aquí es que el valor de la variable edad o no existe o no es un número.
+                        if (sexoMayusculas == 'MASCULINO' || sexoMayusculas == 'FEMENINO') {
+                            //Cumplida la premisa de que la edad no es válida, evaluo aquí que el sexo si lo sea.
+                            //E imprimimo el resultado de estas dos evaluaciones.
+                            document.write(`<br>El individuo número ${index + 1} no tiene una edad válida y su sexo es ${sexo}`);
+                        } else {
+                            //Si se cumple la primera condición (la edad no es válida) pero no la segunda(el sexo es válido), por lo tanto, ni la edad ni el sexo tienen
+                            //valores válidos, imprimo informando de ello.
+                            document.write(`<br>El individuo número ${index + 1} no tiene una edad válida y su sexo tampoco tiene un valor válido.`);
+                        }
+
+                    } else {
+                        //Si no se cumple la primera condición del primer if(edad no válida), por lo tanto, si estamos aquí es que si es válida.
+                        if (sexoMayusculas == 'MASCULINO' || sexoMayusculas == 'FEMENINO') {
+                            //La edad es válida y el sexo también. Imprimo informando de ello.
+                            document.write(`<br>El individuo número ${index + 1} tiene una edad de ${edadEntera} y su sexo es ${sexo}`);
+                        } else {
+                            //Si se cumple el que la edad es válida y el sexo no, imprimo informando de ello nuevamente.
+                            document.write(`<br>El individuo número ${index + 1} una edad de ${edadEntera} y su sexo no tiene un valor válido.`);
+                        }
+                    }
+                }
+            </script>
+            <br>
+            <br>
+            <a href="../mostrarCodigo/mostrarEjercicio03.php">Enlace a código del ejercicio</a>
+        </main>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="../../../../index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="../../../doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="../../indexDWEC.html" id="enlaceSecundario" title="Enlace a Index DWEC">Index DWEC</a>
+        </footer>
+    </body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!--Crea una función que reciba como parámetros: día, mes, año, hora, minutos y segundos y cree una fecha con esos datos.
+     Si la función no recibe ningún parámetro creará la fecha actual.La función mostrará un alert con la información en el
+      siguiente formato:“Hoy es lunes, 1 de noviembre de 2021 y son las 17 horas, 15 minutos y 38 segundos.”-->
+
+<body>
+    <script>
+        let dia = prompt("Introduzca día para construir fecha.");
+        let mes = prompt("Introduzca mes para construir fecha.");
+        let anyo = prompt("Introduzca año para construir fecha.");
+        let hora = prompt("Introduzca hora para construir fecha.");
+        let minutos = prompt("Introduzca minutos para construir fecha.");
+        let segundos = prompt("Introduzca segundos para construir fecha.");
+
+        function diaSemana(numeroDia) {
+            let diaSemana = '';
+            switch (numeroDia) {
+
+                case 0:
+                    diaSemana = "domingo"
+                    break;
+                case 1:
+                    diaSemana = "lunes"
+                    break;
+                case 2:
+                    diaSemana = "martes"
+                    break;
+                case 3:
+                    diaSemana = "miercoles"
+                    break;
+                case 4:
+                    diaSemana = "jueves"
+                    break;
+                case 5:
+                    diaSemana = "viernes"
+                    break;
+                case 6:
+                    diaSemana = "sabado"
+                    break;
+
+                default:
+                    break;
+
+            }
+            return diaSemana;
+        }
+        
+        function crearFecha(dia,mes,anyo,hora,minutos,segundos) {
+            let fecha =new Date(dia,mes,anyo,hora,minutos,segundos);
+            alert(`Hoy es ${fecha.getDay()}`);
+        }
+    </script>
+</body>
+
+</html>
