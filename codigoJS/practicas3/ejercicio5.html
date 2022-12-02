@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td,
+        th {
+            border: 1px black solid;
+            border-collapse: collapse;
+            width: 80px;
+            height: 80px;
+        }
+
+        .falso {
+            background-color: dimgray;
+        }
+
+        .verdadero {
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        const TAM_FILAS = 10;
+        const TAM_COLUMNAS = 10;
+        let tablero = new Array(TAM_FILAS);
+        for (let index = 0; index < TAM_FILAS; index++) {
+            tablero[index] = new Array(TAM_COLUMNAS);
+            for (let j = 0; j < TAM_COLUMNAS; j++) {
+                tablero[index][j] = false;
+            }
+        }
+        function funcionRicardo(tabla) {
+            document.write("<table><tbody>")
+            for (let k = 0; k < tabla.length; k++) {
+                document.write("<tr>")
+                for (let l = 0; l < tabla.length; l++) {
+                    if (tabla[k][l] != false) {
+                        document.write("<th class='falso'></th>");
+                    } else {
+                        document.write("<th class='verdadero'></th>");
+                    }
+                }
+                document.write("</tr>")
+            }
+            document.write("</tbody></table>")
+        }
+        funcionRicardo(tablero);
+
+    </script>
+</body>
+
+</html>

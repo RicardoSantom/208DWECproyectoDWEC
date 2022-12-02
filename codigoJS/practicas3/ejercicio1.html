@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Crea un script que pida una frase al usuario y se la muestre\n
+         con la primera letra de cada palabra en mayúsculas.-->
+    <script>
+        let controlador = false;
+        let frase = prompt("Introduzca una frase: ");
+        let fraseTrim = frase.trim();
+        let numero = parseInt(fraseTrim);
+        let palabras = fraseTrim.split(" ");
+        if (frase == undefined || frase == "") {
+            document.write("Formato incorrecto.");
+        } else {
+            controlador = true;
+            for (let indice in palabras) {
+                if (palabras[indice] != '') {
+                    palabras[indice] = palabras[indice][0].toUpperCase() + palabras[indice].substr(1);
+                }
+            }
+            document.write(palabras.join(" "));
+        }
+    </script>
+</body>
+
+</html>

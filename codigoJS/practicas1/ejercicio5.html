@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Crea un script que permita validar una clave introducida por el usuario y tenga 3 intentos para introducirla bien.
+         Si no la introduce bien, le da error y se sale del programa. La clave debe ser un número de 6 dígitos-->
+    <script>
+        /**
+        * @author Ricardo Santiago Tomé RicardoSantom en Github <https://github.com/RicardoSantom>
+        * @since Octubre 2022
+        * @version 0.1
+        * @param clave Constante de tipo entero y 6 dígitos de longitud que tendrá que intentar ser adivinada por el usuario
+        * @param intento Variable que recogerá la propuesta de clave del usuario.
+        * @param acierto Variable booleana que cambiará de valor según el usuario acierte o falle en sus intentos.
+        * @param contadorFallos Variable de tipo entero que contará el número de intentos del usuario.
+        * @description Este programa establece una constante con el valor de 6 dígitos para intentar ser adivinada por el usuario.
+        * Este lo intentará introduciendo sus apuestas por teclado. Si lo acierta a la primera, le informa de ello, si necesita más
+        * de un intento hasta un máximo de tres, también le informa de ello. Y si excede el número de tres intentos, se para
+        * el seguir intentándolo y se informa al usuario de ello.
+        */
+        const  CLAVE = 123456;
+        var intento;
+        var acierto = true;
+        var contadorFallos = 0;
+        do {
+            //A la entrada a este bucle do while, se pide la clave y se sale en cuanto la variable acierto sea verdadera.
+            intento = prompt("Introduzca clave");
+            if (CLAVE == parseInt(intento)) {
+                //Si el usuario acierta la clave, se le informa de su éxito
+                document.write("Enhorabuena, eres un máquina de la vida, has acertado la clave.");
+                //Se pone a true la variable para que se cumpla la condición y el bucle do while no se ejecute más vece.
+                acierto = true;
+                if (contadorFallos == 0) {
+                    //Aún en el caso anterior( el usuario ha acertado a la primera), evaluo que el contador de fallos sea
+                    //igual a 0, de ser así le informo de que ha acertado a la primera. 
+                    document.write(" Y lo has logrado a la primera.")
+                }
+            } else {
+                //Sino, es que ha errado su intento, le informo de ello.
+                alert("Error, vuelve a intentarlo.");
+                //Incremento en uno el contador de fallos.
+                contadorFallos++;
+                //La variable booleana cambia a false para que el bucle do while se siga ejecutando.
+                acierto = false;
+            }
+            if (contadorFallos == 3) {
+                //Si el contador de fallos ha llegado a 3 cambio el valor de la bariable booleana a true para que no
+                //se vuelva a ejecutar el bucle.
+                acierto = true;
+                //E informo al usuario de ello.
+                document.write("Ha superado el número de intentos, refresque la memoria he inténtelo otro día");
+            }
+        } while (acierto == false);
+        //Una vez terminada la ejecución del bucle informo al usuario de su número de intentos antes del éxito
+        //Esto lo evalua un condicional if, si ha cometido menos de 3 fallos es que en algún momento lo ha acertado.
+        if(contadorFallos < 3){
+            document.write("<br>" + "Ha cometido " + contadorFallos + " errores antes de lograrlo.");
+        } else {
+            //Si no, es que ha cometido más de tres fallos y también le informo de este extremo.
+            document.write("<br>" + "Ha cometido " + contadorFallos + " fallos y no ha logrado acertar la clave.");
+        }
+        
+    </script>
+</body>
+
+</html>

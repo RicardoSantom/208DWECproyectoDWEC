@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Escribe un script que calcule la suma de los números pares y la suma de los números impares comprendidos
+         entre dos números que le pides al usuario. Es decir, el usuario introduce por ejemplo el 45 y el 89 
+         y debes de mostrar la suma de los números pares comprendidos entre el 45 y el 89 y por otro lado 
+         la suma de los números impares. No contar extremos, es decir, el 45 y el 89 en este caso 
+         no se tienen en cuenta.-->
+    <script>
+        var numero1, numero2;
+        var sumaPares = 0;
+        var sumaImpares = 0;
+        numero1 = prompt("Introduzca primer número");
+        numero2 = prompt("Introduzca segundo número");
+        for (let index = parseInt(numero1)+1; index < parseInt(numero2); index++) {
+            if (index%2==0) {
+                parseInt(sumaPares += index);   
+            } else {
+                parseInt(sumaImpares += index); 
+            }
+            
+        }
+        document.write("Este programa calcula la suma de los números pares e impares entre "+numero1+" y el "+numero2+", ambos excluidos."+"<br></br>");
+        document.write("La suma de los números pares es = " + parseInt(sumaPares)+"<br></br>");
+        document.write(" La suma de los números impares es = " +parseInt(sumaImpares));
+    </script>
+</body>
+</html>

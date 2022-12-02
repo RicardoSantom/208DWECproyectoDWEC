@@ -131,3 +131,11 @@ background: linear-gradient(90deg, rgba(2,0,40,1) 0%, rgba(81,109,153,1) 100%, r
     margin-left: 2em;
     margin-top: 1em;
 }
+#enlaceSecundario{
+    color: #fbfaf8;
+    margin-top: 1em;
+    background-color: inherit;
+}
+#enlaceSecundario{
+    margin-left: 2em;
+}

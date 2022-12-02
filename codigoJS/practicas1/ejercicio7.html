@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Escribe un script que muestre por pantalla los múltiplos de 2 que hay entre dos números que pides al usuario.
+         El segundo número tiene que ser mayor o igual que el primer número.-->
+    <script>
+        var numero1, numero2;
+        numero1 = prompt("Introduzca primer número");
+        do {
+            numero2 = prompt("Introduzca segundo número");
+            if (parseInt(numero2) <= parseInt(numero1)) {
+                alert("El segundo número ha de ser mayor que el primero. El primer número era el " + numero1);
+            }
+        } while (parseInt(numero2) <= parseInt(numero1));
+        
+        for (let index = parseInt(numero1); index <= parseInt(numero2); index++) {
+            if (index % 2 == 0) {
+                document.write(parseInt(index) + "<br></br>");
+            }
+        }
+
+    </script>
+</body>
+
+</html>

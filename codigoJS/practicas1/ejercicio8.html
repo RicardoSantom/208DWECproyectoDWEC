@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!--Escribe un script que calcule la suma de los números pares y los números impares de los números comprendidos 
+        entre 1 y 100. El 1 y el 100 no se tienen en cuenta.-->
+    <script>
+        var sumaPares = 0;
+        var sumaImpares = 0;
+        for (let index = 2; index < 100; index++) {
+            if (index%2==0) {
+                parseInt(sumaPares += index);   
+            } else {
+                parseInt(sumaImpares += index); 
+            }
+        }
+        document.write("Este programa calcula la suma de los números pares e impares entre 1 y el 100, ambos excluidos."+"<br></br>");
+        document.write("La suma de los números pares es = " + parseInt(sumaPares)+"<br></br>");
+        document.write(" La suma de los números impares es = " +parseInt(sumaImpares));
+    </script>
+</body>
+</html>

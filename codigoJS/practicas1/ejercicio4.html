@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Crea un script que lea números enteros hasta que el usuario 
+        introduzca un número 0. Finalmente debe mostrar el número 
+        máximo, el mínimo y la media de todos ellos. 
+        Debes de controlar que introduzca números y 
+        no cualquier otro carácter. -->
+    <script>
+        /**
+         * @author Ricardo Santiago Tomé RicardoSantom en Github <https://github.com/RicardoSantom>
+         * @since Octubre 2022
+         * @version 0.1
+         * @param numero Variable de tipo entero que guarda el número solicitado al usuario.
+         * @param acumulador Variable de tipo entero que guardará el valor de numero en cada iteración 
+         * del bucle while.
+         * @param contador Variable de tipo entero que cuenta el número de valores introducidos para
+         * actuar de dividendo a la variable contador y así hallar la media de los valores.
+         * @param maximo Variable de tipo entero que se inicializa al valor del primer número y terminará
+         * guardando el valor máximo de los introducidos.
+         * @param mínimo Variable de tipo entero que se inicializa al valor del primer número y terminará
+         * guardando el valor mínimo de los introducidos.
+         * @description Este programa solicita un número por teclado, en una lectura previa mediante
+         * un bucle while lo hará de nuevo si el valor introducido no es un número. Después, asigna el valor
+         * del número recogido a las variables máximo y mínimo. Con el primer número evaluado positivamente
+         * entra en un segundo bucle while donde permanecerá hasta que se cumpla la condición, que es que se
+         * introduzca un número 0.
+         * Dentro del bucle hará las operaciones necesarias para asignar corréctamente los valores máximo,
+         * mínimo y media de los valores introducidos.
+        */
+        var numero = 0;
+        var acumulador = 0;
+        var contador = 0;
+        numero = prompt("Introduzca un entero:");
+        while (isNaN(numero)) {
+            //Si el programa llega a este punto es que el valor introducido no es un número.
+            //Lo seguirá pidiendo hast que este primer caracter lo sea.
+            alert("El carácter introducido no es un número");
+            numero = prompt("Introduzca un entero:");
+        }
+        //Asignación del valor del número introducido a los valores máximo y mínimo, pues al principio
+        //el máximo y el mínimo no tienen con quien comparar y son el propio primer número.
+        var maximo = numero, minimo = numero;
+        while (numero != 0) {
+            //En su primera iteración el programa tiene el primer valor introducido y validado en el precendente
+            //bucle while, en las siguientes iteraciones este valor irá cambiando con cada introducción por 
+            //el usuario.
+            //Conversión a número del valor introducido para simplificar opeaciones.
+            numero = parseInt(numero);
+            //La variable acumulador también se asegura su valor como entero.
+            acumulador = parseInt(acumulador);
+            //Y se guarda en acumulador el valor de número en cada iteración del bucle.
+            acumulador += numero;
+            //Contador suma 1 a su valor.
+            contador++;
+            if (numero > maximo) {
+                //Si el número es mayor que el valor del número máximo hasta la fecha, el máximo toma el valor del número.
+                maximo = numero;
+            }
+            if (numero < minimo) {
+                //Si el número es menor que el valor del mínimo hasta la fecha, el mínimo pasa a tener el valor del número.
+                minimo = numero;
+            }
+            //Solicito de nuevo el entero para la siguiente iteración (o no) del bucle while dentro del que estamos.
+            numero = prompt("Introduzca un entero:");
+            while (isNaN(numero)) {
+                //Evaluación del valor de número para que se siga solicitando mientras no sea un entero.
+                alert("El carácter introducido no es un número");
+                numero = prompt("Introduzca un entero:");
+            }
+        }
+        //Impresión del resultado de la division entre el total de los valores acumulados y el número de valores dando como 
+        //resultado la media de todos ellos.
+        document.write("La media es " + parseFloat(acumulador / contador) + "<br></br>");
+        //Impresión del valor máximo convertido a entero.
+        document.write("El número máximo es: " + parseInt(maximo) + "<br></br>");
+        //Impresión del valor mínimo convertido a entero.
+        document.write("El número mínimo es: " + parseInt(minimo))
+
+    </script>
+</body>
+
+</html>
