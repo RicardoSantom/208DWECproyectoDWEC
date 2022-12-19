@@ -1,45 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
 
-<body>
-    <script>
-        let aleatorio = parseInt(Math.random() * 100 + 1);
-        let intento = 0;
-        let numeroUsuario;
-        let eleccion;
-        let salir = false;
-        terminado = "", acertado = "";
+    <body>
+        <script>
+            let aleatorio = parseInt(Math.random() * 100 + 1);
+            let intento = 0;
+            let numeroUsuario;
+            let eleccion;
+            let salir = false;
+            terminado = "", acertado = "";
 
-        document.write("<ol>");
-        do {
-            numeroUsuario = prompt("Introduzca número");
-            if (numeroUsuario == null) {
-                terminado = "NO";
-                acertado = "NO";
-                document.write(`<li>Juego terminado: ${terminado}<br></br>`);
-                document.write(`Número de intentos: ${(intento - 1)}<br></br>`);
-                document.write("Número acertado: " + acertado + "<br></br></li>");
-                salir = true;
-                break;
-            } else {
-                if (isNaN(numeroUsuario)) {
-                    alert("Error, el carácter introducido no es un número, inténtelo de nuevo");
+            document.write("<ol>");
+            do {
+                numeroUsuario = prompt("Introduzca número");
+                if (numeroUsuario == null) {
+                    terminado = "NO";
+                    acertado = "NO";
+                    document.write(`<li>Juego terminado: ${terminado}<br></br>`);
+                    document.write(`Número de intentos: ${(intento - 1)}<br></br>`);
+                    document.write("Número acertado: " + acertado + "<br></br></li>");
+                    salir = true;
+                    break;
                 } else {
-                    numeroUsuario = parseInt(numeroUsuario);
-                    if (numeroUsuario === aleatorio) {
-                        intento++;
-                        alert("Enhorabuena, ha acertado el número");
+                    if (isNaN(numeroUsuario)) {
+                        alert("Error, el carácter introducido no es un número, inténtelo de nuevo");
+                    } else {
+                        numeroUsuario = parseInt(numeroUsuario);
+                        if (numeroUsuario === aleatorio) {
+                            intento++;
+                            alert("Enhorabuena, ha acertado el número");
+                            terminado = "SI";
+                            acertado = "SI";
+                            document.write("<li>Juego terminado: " + terminado + "<br></br>");
+                            document.write("Número de intentos: " + intento + "<br></br>");
+                            document.write("Número acertado: " + acertado + "<br></br></li>");
+                            eleccion = confirm("Desea volver a jugar");
+                            if (eleccion) {
+                                intento = 0;
+                                numeroUsuario = -1;
+                                aleatorio = parseInt(Math.random() * 100 + 1);
+                            } else {
+                                salir = true;
+                            }
+                        } else {
+                            intento++;
+                            if (numeroUsuario < aleatorio) {
+                                alert("El número introducido es menor que el número aleatorio");
+                            } else {
+                                alert("El número introducido es mayor que el número aleatorio");
+                            }
+                        }
+                    }
+
+                    if (intento === 5) {
+                        alert("Ha utilizado los 5 intentos de que disponía");
                         terminado = "SI";
-                        acertado = "SI";
-                        document.write("<li>Juego terminado: " + terminado + "<br></br>");
-                        document.write("Número de intentos: " + intento + "<br></br>");
+                        acertado = "NO";
+                        document.write(`<li>Juego terminado: ${terminado}<br></br>`);
+                        document.write(`Número de intentos: ${(intento)}<br></br>`);
                         document.write("Número acertado: " + acertado + "<br></br></li>");
                         eleccion = confirm("Desea volver a jugar");
                         if (eleccion) {
@@ -49,37 +74,19 @@
                         } else {
                             salir = true;
                         }
-                    } else {
-                        intento++;
-                        if (numeroUsuario < aleatorio) {
-                            alert("El número introducido es menor que el número aleatorio");
-                        } else {
-                            alert("El número introducido es mayor que el número aleatorio");
-                        }
                     }
                 }
+            } while (numeroUsuario != aleatorio && intento != 5 && salir != true);
 
-                if (intento === 5) {
-                    alert("Ha utilizado los 5 intentos de que disponía");
-                    terminado = "SI";
-                    acertado = "NO";
-                    document.write(`<li>Juego terminado: ${terminado}<br></br>`);
-                    document.write(`Número de intentos: ${(intento)}<br></br>`);
-                    document.write("Número acertado: " + acertado + "<br></br></li>");
-                    eleccion = confirm("Desea volver a jugar");
-                    if (eleccion) {
-                        intento = 0;
-                        numeroUsuario = -1;
-                        aleatorio = parseInt(Math.random() * 100 + 1);
-                    } else {
-                        salir = true;
-                    }
-                }
-            }
-        } while (numeroUsuario != aleatorio && intento != 5 && salir != true);
-
-        document.write("</ol>");
-    </script>
-</body>
-
+            document.write("</ol>");
+        </script>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>

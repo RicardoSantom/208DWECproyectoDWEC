@@ -1,108 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
 
-<body>
-    <!--1.Crea una función que muestre números de la serie de Fibonacci. 
-        La función recibirá como parámetro el número de elementos de la serie que queremos que muestre. 
-        Este dato se lo solicitaremos al usuario. Debes crear dos funciones para resolver este problema, una recursiva y otra iterativa.-->
-    <script>
-        /*variable clave guardará el valor ingresado por el usuario para establecer el número de elementos de la serie
-        * de Fibonacci calculados con la función iterativa funcionFibonacci
-        */
-        let clave;
-        let arrayFibonacci=[0,1,1,2];
-        /*
-        * bucle que imprimirá un mensaje por pantalla pididendo un número al usuario. Lo pedirá de manera recursiva hasta
-        * mientras que el valor introducido no cumpla ser un número y en este caso , ser mayor de 0.
-        */
-        do {
-            clave = prompt("Introduzca número de elementos para secuencia de Fibonacci: ");
-        } while (isNaN(clave) || clave < 0);
-        clave = parseInt(clave);
+    <body>
+        <!--1.Crea una función que muestre números de la serie de Fibonacci. 
+            La función recibirá como parámetro el número de elementos de la serie que queremos que muestre. 
+            Este dato se lo solicitaremos al usuario. Debes crear dos funciones para resolver este problema, una recursiva y otra iterativa.-->
+        <script>
+            /*variable clave guardará el valor ingresado por el usuario para establecer el número de elementos de la serie
+             * de Fibonacci calculados con la función iterativa funcionFibonacci
+             */
+            let clave;
+            let arrayFibonacci = [0, 1, 1, 2];
+            /*
+             * bucle que imprimirá un mensaje por pantalla pididendo un número al usuario. Lo pedirá de manera recursiva hasta
+             * mientras que el valor introducido no cumpla ser un número y en este caso , ser mayor de 0.
+             */
+            do {
+                clave = prompt("Introduzca número de elementos para secuencia de Fibonacci: ");
+            } while (isNaN(clave) || clave < 0);
+            clave = parseInt(clave);
 
-        /**
-         * funcionFibonacci recibe la variable clave introducida por el usuario y de manera iterativa devuelve ese número de 
-         * elementos de la secuencia de Fibonacci.
-         * */
-        function funcionFibonacci(clave) {
-            // numeroActual es la variable que guardará el valor que se va calculando en la función para el número a imprimir.
-            // nAnteriro guardará el valor de numeroActual antes de que numeroActual tome su siguiente valor. Esto lo hace para
-            // poder operar con posterioridad restándole al numeroActual su valor anterior.
-            let numeroActual = 0;
-            let numeroAnterior = 0;
-            //El usuario pide 0 elementos.
-            if (clave == 0) {
-                console.log("Ha pedido 0 elementos de la secuencia, no se mostrará nada.");
-            }
-            //Si el usuario pide solo un elemento
-            if (clave == 1) {
-                console.log(numeroActual);
-            }
-            //El usuario pide 2 elementos.
-            //Hasta aquí los números de la serie que por problemas de operaciones o formato rompen el resto de la secuencia.
-            if (clave == 2) {
-                console.log(numeroActual);
-                numeroActual++;
-                console.log(numeroActual);
-            }
-            /*Cuando el usuario pide un número de elementos mayor de dos, la secuencia de Fibonacci cumple para todos sus
-            *elementos a partir del que ocupa la tercera posición las mismas operaciones necesarias para calcularlo. Esto es
-            * el elemento actual se obtiene de sumar sus dos elementos anteriores.
-            */
-            if (clave > 2) {
-                //las siguientes 5 lineas imprimen y modifican el valor de numeroActual para en caso de que el usuario decida
-                //pedir más de 2 valores de la serie de Fibonacci, imprime los 3 primeros valores que rompen la 
-                //secuencia y con posterioridad entra en el siguiente bucle for debidamente comentado.
-                console.log(numeroActual);
-                numeroActual++;
-                console.log(numeroActual);
-                console.log(numeroActual);
-                numeroAnterior = numeroActual - numeroAnterior;
-                numeroActual++;
-                /*
-                * Desde 0 y hasta clave -3 ( 3 porque tengo que descontar que en el anterior if ya he imprimido los
-                * 3 primeros valores), el siguiente bucle imprime el numeroActual que en su primera iteración tiene el
-                * valor 2 heredado de las instrucciones anteriormente comentadas, posteriormente suma a  su valor el
-                * valor de numeroAnterior que guarda el anterior valor de numeroActual. Después, para dotar a numeroAnterior
-                * del valor que ha de guardar para la siguiente iteración, le restamos al número Actual el valor del numero anterior.
-                */
-                for (let index = 0; index < clave - 3; index++) {
-                    console.log(numeroActual);
-                    numeroActual += numeroAnterior;
-                    numeroAnterior = numeroActual - numeroAnterior;
-                    //A continuación añado numeroActual al arrayFibonacci
-                    //Esto es una alternativa al acumulador utilizado en el bucle for.
-                    arrayFibonacci.push(numeroActual);
+            /**
+             * funcionFibonacci recibe la variable clave introducida por el usuario y de manera iterativa devuelve ese número de 
+             * elementos de la secuencia de Fibonacci.
+             * */
+            function funcionFibonacci(clave) {
+                // numeroActual es la variable que guardará el valor que se va calculando en la función para el número a imprimir.
+                // nAnteriro guardará el valor de numeroActual antes de que numeroActual tome su siguiente valor. Esto lo hace para
+                // poder operar con posterioridad restándole al numeroActual su valor anterior.
+                let numeroActual = 0;
+                let numeroAnterior = 0;
+                //El usuario pide 0 elementos.
+                if (clave == 0) {
+                    console.log("Ha pedido 0 elementos de la secuencia, no se mostrará nada.");
                 }
+                //Si el usuario pide solo un elemento
+                if (clave == 1) {
+                    console.log(numeroActual);
+                }
+                //El usuario pide 2 elementos.
+                //Hasta aquí los números de la serie que por problemas de operaciones o formato rompen el resto de la secuencia.
+                if (clave == 2) {
+                    console.log(numeroActual);
+                    numeroActual++;
+                    console.log(numeroActual);
+                }
+                /*Cuando el usuario pide un número de elementos mayor de dos, la secuencia de Fibonacci cumple para todos sus
+                 *elementos a partir del que ocupa la tercera posición las mismas operaciones necesarias para calcularlo. Esto es
+                 * el elemento actual se obtiene de sumar sus dos elementos anteriores.
+                 */
+                if (clave > 2) {
+                    //las siguientes 5 lineas imprimen y modifican el valor de numeroActual para en caso de que el usuario decida
+                    //pedir más de 2 valores de la serie de Fibonacci, imprime los 3 primeros valores que rompen la 
+                    //secuencia y con posterioridad entra en el siguiente bucle for debidamente comentado.
+                    console.log(numeroActual);
+                    numeroActual++;
+                    console.log(numeroActual);
+                    console.log(numeroActual);
+                    numeroAnterior = numeroActual - numeroAnterior;
+                    numeroActual++;
+                    /*
+                     * Desde 0 y hasta clave -3 ( 3 porque tengo que descontar que en el anterior if ya he imprimido los
+                     * 3 primeros valores), el siguiente bucle imprime el numeroActual que en su primera iteración tiene el
+                     * valor 2 heredado de las instrucciones anteriormente comentadas, posteriormente suma a  su valor el
+                     * valor de numeroAnterior que guarda el anterior valor de numeroActual. Después, para dotar a numeroAnterior
+                     * del valor que ha de guardar para la siguiente iteración, le restamos al número Actual el valor del numero anterior.
+                     */
+                    for (let index = 0; index < clave - 3; index++) {
+                        console.log(numeroActual);
+                        numeroActual += numeroAnterior;
+                        numeroAnterior = numeroActual - numeroAnterior;
+                        //A continuación añado numeroActual al arrayFibonacci
+                        //Esto es una alternativa al acumulador utilizado en el bucle for.
+                        arrayFibonacci.push(numeroActual);
+                    }
+                }
+                console.log("Ahora muestro la secuencia de Fibonacci como array");
+                console.log(arrayFibonacci);
             }
-            console.log("Ahora muestro la secuencia de Fibonacci como array");
-            console.log(arrayFibonacci);
-        }
 
-        /**
-         * funcion fibonacciRecursivo recibe como parámetro el número introducido por el usuario.
-         * evalua si este es igual a 0, en este caso, devuelve 0. Si el valor proporcionado es 1, devuelve 1.
-         * En cualquier otro caso mendiante dos llamadas recursivas al propio método y sumando el resultado de
-         * estas dos llamadas, nos devuelve el número de la secuencia de Fibonacci que ocupa la posición coincidente
-         * con el número proporcionado por el usuario.
-          */
-        function fibonacciRecursivo(clave) {
-            if (clave === 0) return 0;
-            else if (clave === 1) return 1;
-            else return fibonacciRecursivo(clave - 1) + fibonacciRecursivo(clave - 2);
-        }
-        funcionFibonacci(clave);
-        console.log("--------Siguiente función---------");
-        console.log(fibonacciRecursivo(clave));
-        console.log("El número " + fibonacciRecursivo(clave) + " ocupa el puesto " + clave + " dentro de la secuencia de Fibonacci.");
-    </script>
-</body>
-
+            /**
+             * funcion fibonacciRecursivo recibe como parámetro el número introducido por el usuario.
+             * evalua si este es igual a 0, en este caso, devuelve 0. Si el valor proporcionado es 1, devuelve 1.
+             * En cualquier otro caso mendiante dos llamadas recursivas al propio método y sumando el resultado de
+             * estas dos llamadas, nos devuelve el número de la secuencia de Fibonacci que ocupa la posición coincidente
+             * con el número proporcionado por el usuario.
+             */
+            function fibonacciRecursivo(clave) {
+                if (clave === 0)
+                    return 0;
+                else if (clave === 1)
+                    return 1;
+                else
+                    return fibonacciRecursivo(clave - 1) + fibonacciRecursivo(clave - 2);
+            }
+            funcionFibonacci(clave);
+            console.log("--------Siguiente función---------");
+            console.log(fibonacciRecursivo(clave));
+            console.log("El número " + fibonacciRecursivo(clave) + " ocupa el puesto " + clave + " dentro de la secuencia de Fibonacci.");
+        </script>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>

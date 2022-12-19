@@ -1,63 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Ricardo Santiago Tomé">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../../../webroot/images/favicon-96x96.png">
+        <link rel="stylesheet" href="../../webroot/css/estilos.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Ejercicio 4 práctrica 1</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <!--Crea una función que reciba como parámetros: día, mes, año, hora, minutos y segundos y cree una fecha con esos datos.
+             Si la función no recibe ningún parámetro creará la fecha actual.La función mostrará un alert con la información en el
+              siguiente formato:“Hoy es lunes, 1 de noviembre de 2021 y son las 17 horas, 15 minutos y 38 segundos.”-->
+        <header>
+            <h1>Desarrollo Aplicaciones Web Entorno Cliente</h1>
+            <h2>Ejercicios prácticos</h2>
+            <h3>Ejercicio 4</h3>
+        </header>
+        <main>
+            <article>
+                <h3>Crea una función que reciba como parámetros: día, mes, año, hora, minutos y segundos y cree una fecha con esos datos.
+                    Si la función no recibe ningún parámetro creará la fecha actual.La función mostrará un alert con la información en el
+                    siguiente formato:“Hoy es lunes, 1 de noviembre de 2021 y son las 17 horas, 15 minutos y 38 segundos.”</h3><br>
+            </article>
+            <script>
+                let dia = prompt("Introduzca día para construir fecha.");
+                let mes = prompt("Introduzca mes para construir fecha.");
+                let anyo = prompt("Introduzca año para construir fecha.");
+                let hora = prompt("Introduzca hora para construir fecha.");
+                let minutos = prompt("Introduzca minutos para construir fecha.");
+                let segundos = prompt("Introduzca segundos para construir fecha.");
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<!--Crea una función que reciba como parámetros: día, mes, año, hora, minutos y segundos y cree una fecha con esos datos.
-     Si la función no recibe ningún parámetro creará la fecha actual.La función mostrará un alert con la información en el
-      siguiente formato:“Hoy es lunes, 1 de noviembre de 2021 y son las 17 horas, 15 minutos y 38 segundos.”-->
+                function diaSemana(numeroDia) {
+                    let diaSemana = '';
+                    switch (numeroDia) {
 
-<body>
-    <script>
-        let dia = prompt("Introduzca día para construir fecha.");
-        let mes = prompt("Introduzca mes para construir fecha.");
-        let anyo = prompt("Introduzca año para construir fecha.");
-        let hora = prompt("Introduzca hora para construir fecha.");
-        let minutos = prompt("Introduzca minutos para construir fecha.");
-        let segundos = prompt("Introduzca segundos para construir fecha.");
+                        case 0:
+                            diaSemana = "domingo"
+                            break;
+                        case 1:
+                            diaSemana = "lunes"
+                            break;
+                        case 2:
+                            diaSemana = "martes"
+                            break;
+                        case 3:
+                            diaSemana = "miercoles"
+                            break;
+                        case 4:
+                            diaSemana = "jueves"
+                            break;
+                        case 5:
+                            diaSemana = "viernes"
+                            break;
+                        case 6:
+                            diaSemana = "sabado"
+                            break;
 
-        function diaSemana(numeroDia) {
-            let diaSemana = '';
-            switch (numeroDia) {
+                        default:
+                            break;
 
-                case 0:
-                    diaSemana = "domingo"
-                    break;
-                case 1:
-                    diaSemana = "lunes"
-                    break;
-                case 2:
-                    diaSemana = "martes"
-                    break;
-                case 3:
-                    diaSemana = "miercoles"
-                    break;
-                case 4:
-                    diaSemana = "jueves"
-                    break;
-                case 5:
-                    diaSemana = "viernes"
-                    break;
-                case 6:
-                    diaSemana = "sabado"
-                    break;
+                    }
+                    return diaSemana;
+                }
 
-                default:
-                    break;
-
-            }
-            return diaSemana;
-        }
-        
-        function crearFecha(dia,mes,anyo,hora,minutos,segundos) {
-            let fecha =new Date(dia,mes,anyo,hora,minutos,segundos);
-            alert(`Hoy es ${fecha.getDay()}`);
-        }
-    </script>
-</body>
-
+                function crearFecha(dia, mes, anyo, hora, minutos, segundos) {
+                    let fecha = new Date(dia, mes, anyo, hora, minutos, segundos);
+                    alert(`Hoy es ${fecha.getDay()}`);
+                }
+            </script>
+        </main>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>

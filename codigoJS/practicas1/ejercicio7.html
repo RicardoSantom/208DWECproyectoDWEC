@@ -1,33 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Ricardo Santiago Tomé">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../../../webroot/images/favicon-96x96.png">
+        <link rel="stylesheet" href="../../webroot/css/estilos.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Ejercicio 7 práctrica 1</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <!--Esnúmero tiene que ser mayor o igual que el primer númerocribe un script que muestre por pantalla los múltiplos de 2 que hay entre dos números que pides al usuario.
+             El segundo número tiene que ser mayor o igual que el primer número.-->
+        <header>
+            <h1>Desarrollo Aplicaciones Web Entorno Cliente</h1>
+            <h2>Ejercicios prácticos</h2>
+            <h3>Ejercicio 7</h3>
+        </header>
+        <main>
+            <article>
+                <h3>Esnúmero tiene que ser mayor o igual que el primer númerocribe un script que muestre por pantalla los múltiplos de 2 que hay entre dos números que pides al usuario.
+                    El segundo número tiene que ser mayor o igual que el primer número.</h3><br>
+            </article>
+            <script>
+                var numero1, numero2;
+                numero1 = prompt("Introduzca primer número");
+                do {
+                    numero2 = prompt("Introduzca segundo número");
+                    if (parseInt(numero2) <= parseInt(numero1)) {
+                        alert("El segundo número ha de ser mayor que el primero. El primer número era el " + numero1);
+                    }
+                } while (parseInt(numero2) <= parseInt(numero1));
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+                for (let index = parseInt(numero1); index <= parseInt(numero2); index++) {
+                    if (index % 2 == 0) {
+                        document.write(parseInt(index) + "<br></br>");
+                    }
+                }
 
-<body>
-    <!--Escribe un script que muestre por pantalla los múltiplos de 2 que hay entre dos números que pides al usuario.
-         El segundo número tiene que ser mayor o igual que el primer número.-->
-    <script>
-        var numero1, numero2;
-        numero1 = prompt("Introduzca primer número");
-        do {
-            numero2 = prompt("Introduzca segundo número");
-            if (parseInt(numero2) <= parseInt(numero1)) {
-                alert("El segundo número ha de ser mayor que el primero. El primer número era el " + numero1);
-            }
-        } while (parseInt(numero2) <= parseInt(numero1));
-        
-        for (let index = parseInt(numero1); index <= parseInt(numero2); index++) {
-            if (index % 2 == 0) {
-                document.write(parseInt(index) + "<br></br>");
-            }
-        }
-
-    </script>
-</body>
-
+            </script>
+            <footer>
+                <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+                <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+                <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+                <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+            </footer>
+        </main>
+    </body>
 </html>

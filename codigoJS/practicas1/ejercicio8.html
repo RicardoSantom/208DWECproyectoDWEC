@@ -1,27 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <!--Escribe un script que calcule la suma de los números pares y los números impares de los números comprendidos 
-        entre 1 y 100. El 1 y el 100 no se tienen en cuenta.-->
-    <script>
-        var sumaPares = 0;
-        var sumaImpares = 0;
-        for (let index = 2; index < 100; index++) {
-            if (index%2==0) {
-                parseInt(sumaPares += index);   
-            } else {
-                parseInt(sumaImpares += index); 
-            }
-        }
-        document.write("Este programa calcula la suma de los números pares e impares entre 1 y el 100, ambos excluidos."+"<br></br>");
-        document.write("La suma de los números pares es = " + parseInt(sumaPares)+"<br></br>");
-        document.write(" La suma de los números impares es = " +parseInt(sumaImpares));
-    </script>
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Ricardo Santiago Tomé">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../../../webroot/images/favicon-96x96.png">
+        <link rel="stylesheet" href="../../webroot/css/estilos.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Ejercicio 8 práctrica 1</title>
+    </head>
+    <body>
+        <!--Escribe un script que calcule la suma de los números pares y los números impares de los números comprendidos 
+            entre 1 y 100. El 1 y el 100 no se tienen en cuenta.-->
+        <header>
+            <h1>Desarrollo Aplicaciones Web Entorno Cliente</h1>
+            <h2>Ejercicios prácticos</h2>
+            <h3>Ejercicio 8</h3>
+        </header>
+        <main>
+            <article>
+                <h3>Escribe un script que calcule la suma de los números pares y los números impares de los números comprendidos 
+                    entre 1 y 100. El 1 y el 100 no se tienen en cuenta.</h3><br>
+            </article>
+            <script>
+                var sumaPares = 0;
+                var sumaImpares = 0;
+                for (let index = 2; index < 100; index++) {
+                    if (index % 2 == 0) {
+                        parseInt(sumaPares += index);
+                    } else {
+                        parseInt(sumaImpares += index);
+                    }
+                }
+                document.write("<div id='idScript'>Este programa calcula la suma de los números pares e impares entre 1 y el 100, ambos excluidos." + "<br></br>");
+                document.write("La suma de los números pares es = " + parseInt(sumaPares) + "<br></br>");
+                document.write(" La suma de los números impares es = " + parseInt(sumaImpares)+"</div>");
+            </script>
+            <footer>
+                <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+                <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+                <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+                <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+            </footer>
+        </main>
+    </body>
 </html>

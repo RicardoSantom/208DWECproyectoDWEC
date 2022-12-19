@@ -1,99 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
 
-<body>
-    <!--2.Crea una función para detectar anagramas. Un anagrama es una palabra que resulta de transponer las letras de otra,
-         por ejemplo: “SENTIDO” y “DESTINO”. La función recibirá como mínimo dos palabras, aunque puede recibir más y devolverá
-          verdadero o falso en función de si las palabras son anagramas de las mismas letras. -->
-    <script>
-        let array1 = new Array;
-        let array2 = new Array;
-        let array1Ordenado = new Array;
-        let array2Ordenado = new Array;
-        let palabra1 = prompt("Introduzca palabra para comprobar anagrama");
-        let palabra2 = prompt("Introduzca palabra para comprobar anagrama");
-        function detectaAnagramas(palabra1, palabra2) {
+    <body>
+        <!--2.Crea una función para detectar anagramas. Un anagrama es una palabra que resulta de transponer las letras de otra,
+             por ejemplo: “SENTIDO” y “DESTINO”. La función recibirá como mínimo dos palabras, aunque puede recibir más y devolverá
+              verdadero o falso en función de si las palabras son anagramas de las mismas letras. -->
+        <script>
+            let array1 = new Array;
+            let array2 = new Array;
+            let array1Ordenado = new Array;
+            let array2Ordenado = new Array;
+            let palabra1 = prompt("Introduzca palabra para comprobar anagrama");
+            let palabra2 = prompt("Introduzca palabra para comprobar anagrama");
+            function detectaAnagramas(palabra1, palabra2) {
 
-            let booleano = true;
+                let booleano = true;
 
-            convierteStringEnArray(palabra1, palabra2);
-            ordenaArrays(array1, array2);
+                convierteStringEnArray(palabra1, palabra2);
+                ordenaArrays(array1, array2);
 
-            for (let index = 0; index < BuscarlongitudArray(array1Ordenado, array2Ordenado); index++) {
-                console.log(index);
-                eliminaBlancos(array1Ordenado, array2Ordenado);
+                for (let index = 0; index < BuscarlongitudArray(array1Ordenado, array2Ordenado); index++) {
+                    console.log(index);
+                    eliminaBlancos(array1Ordenado, array2Ordenado);
 
 
-                if (array1Ordenado[index] != array2Ordenado[index]) {
-                    booleano = false;
-                    break;
+                    if (array1Ordenado[index] != array2Ordenado[index]) {
+                        booleano = false;
+                        break;
+                    }
                 }
+                return booleano;
             }
-            return booleano;
-        }
 
-        function BuscarlongitudArray(array1, array2) {
-            let longitudArray;
-            if (array1.length == array2.length) {
-                longitudArray = array1.length;
-            } else {
-                if (array1.length < array2.length) {
-                    longitudArray = array2.length;
-                } else {
+            function BuscarlongitudArray(array1, array2) {
+                let longitudArray;
+                if (array1.length == array2.length) {
                     longitudArray = array1.length;
+                } else {
+                    if (array1.length < array2.length) {
+                        longitudArray = array2.length;
+                    } else {
+                        longitudArray = array1.length;
+                    }
+                }
+
+                //Devuelve un entero igual a la longitud del array más largo.
+                return longitudArray;
+            }
+
+            function convierteStringEnArray(palabra1, palabra2) {
+                for (let index = 0; index < palabra1.length; index++) {
+                    array1.push(palabra1.charAt(index));
+
+                }
+
+                for (let index = 0; index < palabra2.length; index++) {
+                    array2.push(palabra2.charAt(index));
+
                 }
             }
 
-            //Devuelve un entero igual a la longitud del array más largo.
-            return longitudArray;
-        }
-
-        function convierteStringEnArray(palabra1, palabra2) {
-            for (let index = 0; index < palabra1.length; index++) {
-                array1.push(palabra1.charAt(index));
-
+            function ordenaArrays(array1, array2) {
+                array1Ordenado = array1.sort();
+                array2Ordenado = array2.sort();
             }
 
-            for (let index = 0; index < palabra2.length; index++) {
-                array2.push(palabra2.charAt(index));
+            function eliminaBlancos(array1Ordenado, array2Ordenado) {
+                for (let index = 0; index < BuscarlongitudArray(array1Ordenado, array2Ordenado); index++) {
+                    while (array1Ordenado[index] == " " || array2Ordenado[index] == " ") {
+                        if (array1Ordenado[index] == " ") {
+                            console.log(array1Ordenado.splice([index], 1));
+                        }
 
-            }
-        }
-
-        function ordenaArrays(array1, array2) {
-            array1Ordenado = array1.sort();
-            array2Ordenado = array2.sort();
-        }
-
-        function eliminaBlancos(array1Ordenado, array2Ordenado) {
-            for (let index = 0; index < BuscarlongitudArray(array1Ordenado, array2Ordenado); index++) {
-                while (array1Ordenado[index] == " " || array2Ordenado[index] == " ") {
-                    if (array1Ordenado[index] == " ") {
-                        console.log(array1Ordenado.splice([index], 1));
-                    }
-
-                    if (array2Ordenado[index] == " ") {
-                        array2Ordenado.splice([index], 1)
+                        if (array2Ordenado[index] == " ") {
+                            array2Ordenado.splice([index], 1)
+                        }
                     }
                 }
+                return array1Ordenado, array2Ordenado;
             }
-            return array1Ordenado, array2Ordenado;
-        }
 
-        if (detectaAnagramas(palabra1, palabra2) == true) {
-            document.write(`La palabra ${palabra1} y la palabra ${palabra2} SI son anagramas`);
-        } else {
-            document.write(`La palabra ${palabra1} y la palabra ${palabra2} NO son anagramas`);
-        }
+            if (detectaAnagramas(palabra1, palabra2) == true) {
+                document.write(`La palabra ${palabra1} y la palabra ${palabra2} SI son anagramas`);
+            } else {
+                document.write(`La palabra ${palabra1} y la palabra ${palabra2} NO son anagramas`);
+            }
 
-    </script>
-</body>
-
+        </script>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>
