@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <!--1. En editores como Visual Studio Code, que tienen el módulo Emmet incorporado, se pueden crear párrafos 
+con el texto clásico de pruebas “Lorem ipsum…”. Si estando en el body de una nueva página web 
+escribimos ol>li*9>lorem y luego pulsamos el tabulador, se crearán 9 párrafos numerados con el texto en 
+cuestión. Una vez creados los párrafos, el ejercicio consistirá en pedir al usuario un texto y un número del 
+1 al 10 para la posición de ese texto. El texto introducido se mostrará en negrita y en la posición indicada 
+sin eliminar ninguno de los párrafos anteriores. Se debe controlar que el usuario introduzca datos válidos. 
+Si el usuario cancela, la aplicación no hace nada.
+-->
+    <ol>
+        <li>Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita fuga molestias eum tempore maxime vitae
+            neque? Dolore voluptas temporibus soluta quo placeat consequatur, nemo fugiat, impedit tempore quos eveniet?
+            Delectus!</li>
+        <li>Nulla iusto, iste explicabo autem quia in. Sed dolor aliquam ea blanditiis ex hic quos cumque ipsa quam
+            excepturi dicta minima ipsum ratione optio sint delectus quia, eaque debitis suscipit!</li>
+        <li>Id possimus impedit ducimus quibusdam quisquam atque similique ut obcaecati accusamus odit. Blanditiis autem
+            architecto odit doloremque vel debitis eveniet optio beatae ullam, ipsa iusto nam dolorum soluta quas qui?
+        </li>
+        <li>Illo, ut sit? Sint recusandae eligendi suscipit laudantium optio repellendus laborum distinctio aliquid
+            harum incidunt officia in nihil modi ipsa tempore est, sit error? Laudantium quibusdam eum obcaecati quidem
+            blanditiis!</li>
+        <li>Praesentium, ea? Praesentium officiis nisi cumque totam eos soluta ducimus porro mollitia, reprehenderit
+            fugit sed deleniti laudantium ullam reiciendis sint voluptates quam ea excepturi incidunt ad quaerat magni
+            repellendus aliquid!</li>
+        <li>Alias deleniti, id consequatur sapiente magnam saepe fuga totam qui dolorem cum blanditiis asperiores
+            architecto in ipsum repudiandae omnis expedita! Molestiae, aut incidunt provident dolorum quisquam
+            blanditiis odio fugiat a?</li>
+        <li>Mollitia obcaecati, amet quod est accusantium dicta maiores neque necessitatibus sed facere, ullam
+            reprehenderit saepe odio unde dolorum. Nam atque quaerat nemo nulla rem asperiores eveniet quo amet
+            blanditiis facere!</li>
+        <li>At velit odio nesciunt nostrum sint, veniam laboriosam similique reprehenderit hic vitae laudantium
+            assumenda consequatur officiis unde laborum nisi eius quidem amet quasi. Repellendus consequuntur magni amet
+            voluptas quo quae!</li>
+        <li>Vel, harum explicabo asperiores quae similique illum quidem, sit iusto voluptate quam nostrum atque soluta
+            necessitatibus saepe architecto ea dolores ex mollitia sed nam suscipit et tempora sequi. Quia, molestiae.
+        </li>
+    </ol>
+    <script>
+        window.addEventListener("load", inicio);
+        function inicio() {
+            do {
+               var texto = prompt("Introduzca texto.");
+            } while (texto==null || texto =="");
+            do {
+                var posicion = parseInt(prompt("Introduzca puesto en la lista donde desea introducirlo"));
+            } while (isNaN(posicion) || posicion=="");
+           
+            let nodoPadre = document.getElementsByTagName("ol")[0];
+            let nuevoLi = document.createElement("li");
+            nuevoLi.innerHTML = "<strong>"+texto+"</strong>";
+            if (posicion>=1 && posicion<10) {
+                nodoPadre.insertBefore(nuevoLi, nodoPadre.children[posicion - 1]);
+            } else {
+                nodoPadre.appendChild(nuevoLi);
+            }
+        }
+    </script>
+</body>
+
+</html>

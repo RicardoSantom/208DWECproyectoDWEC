@@ -1,170 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+        <meta name="author" content="Ricardo Santiago Tomé">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="icon" type="image/png" sizes="96x96" href="../../../../webroot/images/favicon-96x96.png">
+        <link rel="stylesheet" href="../../webroot/css/estilos.css"/>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <title>Ejercicio 6 práctrica 1</title>
+        <style>
+        </style>
+    </head>
+    <body>
+        <!-- Crea un script que calcule las calificaciones de un grupo de alumnos. El profesor tendrá que introducir 
+        el número de alumnos que va a gestionar el script.
+        La nota final de cada alumno se calcula según el siguiente criterio: 
+        a. Parte práctica 40%
+        b. Parte teórica 30%
+        c. Actitud 10%
+        El script leerá el nombre del alumno y su número de expediente y las notas obtenidas en cada parte. 
+        Finalmente mostrará el resultado de todos los alumnos y una media de la nota final y una media de 
+        cada parte.
+        Nota:
+        • El número de expediente está formado por 4 números y una letra minúscula
+        • Las notas deben estar entre 0 y 10. Si se introduce un valor que no es numérico o no está entre 
+        los valores 0-10, dará un error y volverá a pedir la información. -->
+        <header>
+            <h1>Desarrollo Aplicaciones Web Entorno Cliente</h1>
+            <h2>Ejercicios prácticos</h2>
+            <h3>Ejercicio 6</h3>
+        </header>
+        <main>
+            <article>
+                <h3>Crea un script que calcule las calificaciones de un grupo de alumnos.</h3><br>
+            </article>
+            <script>
+                let numeroAlumnos = prompt("Bienvenido profesor.Introduzca numero de alumnos: ");
+                let nombre, expediente, practica, teoria, actitud, letra, letraMinuscula;
+                let expedienteCorrecto = true;
+                document.write(`<table>`);
+                document.write(`<thead><tr><th>Nombre</th><th>Expediente</th><th>Práctica</th><th>Teoría</th><th>Actitud</th><th>Total</th></tr></thead><tbody>`);
+                for (let index = 1; index <= numeroAlumnos; index++) {
+                    do {
+                        nombre = prompt("Introduzca nombre del alumno: ");
+                        if (nombre == '' || nombre == null) {
+                            alert("No ha introducido ningún nombre.")
+                        }
+                    } while (nombre == '' || nombre == null);
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 06 practica 1</title>
-    <style>
-        table {
-            width: 60%;
-            margin: 0 auto;
-        }
+                    do {
+                        expediente = prompt("Introduzca expediente: ");
 
-        td,
-        th {
-            width: 10%;
-            border: 2px black double;
-            height: 2rem;
-            border-collapse: collapse;
-        }
-
-        td {
-            text-align: center;
-            color: blue;
-        }
-    </style>
-</head>
-<!-- Crea un script que calcule las calificaciones de un grupo de alumnos. El profesor tendrá que introducir 
-el número de alumnos que va a gestionar el script.
-La nota final de cada alumno se calcula según el siguiente criterio: 
-a. Parte práctica 40%
-b. Parte teórica 30%
-c. Actitud 10%
-El script leerá el nombre del alumno y su número de expediente y las notas obtenidas en cada parte. 
-Finalmente mostrará el resultado de todos los alumnos y una media de la nota final y una media de 
-cada parte.
-Nota:
-• El número de expediente está formado por 4 números y una letra minúscula
-• Las notas deben estar entre 0 y 10. Si se introduce un valor que no es numérico o no está entre 
-los valores 0-10, dará un error y volverá a pedir la información. -->
-
-<body>
-    <script>
-        let numeroAlumnos = prompt("Bienvenido profesor.Introduzca numero de alumnos: ");
-        let nombre, expediente, practica, teoria, actitud, letra, letraMinuscula;
-        let expedienteCorrecto = true;
-        document.write(`<table>`);
-        document.write(`<thead><tr><th>Nombre</th><th>Expediente</th><th>Práctica</th><th>Teoría</th><th>Actitud</th><th>Total</th></tr></thead><tbody>`);
-        for (let index = 1; index <= numeroAlumnos; index++) {
-            do {
-                nombre = prompt("Introduzca nombre del alumno: ");
-                if (nombre == '' || nombre == null) {
-                    alert("No ha introducido ningún nombre.")
-                }
-            } while (nombre == '' || nombre == null);
-
-            do {
-                expediente = prompt("Introduzca expediente: ");
-
-                if (expediente == '' || expediente == null) {
-                    alert("No ha introducido valor.")
-                    expediente = 1;
-                    expedienteCorrecto = false;
-                } else {
-                    if (expediente.length != 5) {
-                        alert("La longitud del número de expediente ha de ser de 5 caracteres");
-                        expedienteCorrecto = false;
-                    }
-                    /*if (isNaN(expediente.charAt(5))) {
-                        letra = expediente.charAt(5);
-                        letraMinuscula = letra.toLocaleLowerCase();
-                        alert(letra);
-                        alert(letraMinuscula);
-                        expedienteCorrecto = false;
-                        if (letra !== letraMinuscula) {
-                            alert("El caracter número 5 ha de ser una letra minúscula.");
+                        if (expediente == '' || expediente == null) {
+                            alert("No ha introducido valor.")
+                            expediente = 1;
                             expedienteCorrecto = false;
                         } else {
-                            for (let index = 0; index < expediente.length - 2; index++) {
-                                if (isNaN(expediente.charAt(index))) {
-                                    alert("Los cuatro primeros caracteres han de ser dígitos.");
-                                    index = expediente.length - 1;
-                                    expedienteCorrecto = false
-                                } else {
-                                    expedienteCorrecto = true;
-                                }
+                            if (expediente.length != 5) {
+                                alert("La longitud del número de expediente ha de ser de 5 caracteres");
+                                expedienteCorrecto = false;
                             }
+                            /*if (isNaN(expediente.charAt(5))) {
+                             letra = expediente.charAt(5);
+                             letraMinuscula = letra.toLocaleLowerCase();
+                             alert(letra);
+                             alert(letraMinuscula);
+                             expedienteCorrecto = false;
+                             if (letra !== letraMinuscula) {
+                             alert("El caracter número 5 ha de ser una letra minúscula.");
+                             expedienteCorrecto = false;
+                             } else {
+                             for (let index = 0; index < expediente.length - 2; index++) {
+                             if (isNaN(expediente.charAt(index))) {
+                             alert("Los cuatro primeros caracteres han de ser dígitos.");
+                             index = expediente.length - 1;
+                             expedienteCorrecto = false
+                             } else {
+                             expedienteCorrecto = true;
+                             }
+                             }
+                             
+                             
+                             }
+                             } else {
+                             expedienteCorrecto = false;
+                             }*/
 
 
                         }
-                    } else {
-                        expedienteCorrecto = false;
-                    }*/
+                    } while (expediente.length != 5 || expediente == '' || expediente == null || expedienteCorrecto == false);
 
 
+                    do {
+                        practica = prompt("Introduzca nota de la parte práctica: ");
+                        if (isNaN(practica)) {
+                            alert("No es un numero");
+                        } else {
+                            if (practica < 0) {
+                                alert("Error en la entrada, el valor ha de ser superior o igual a 0");
+                            }
+                            if (practica > 10) {
+                                alert("Error en la entrada, el valor ha de ser inferior o igual a 10");
+                            }
+                        }
+
+                        if (practica == '' || practica == null) {
+                            alert("No ha introducido valor.")
+                        }
+                    } while (isNaN(practica) || practica < 0 || practica > 10 || practica == '' || practica == null);
+
+                    do {
+                        teoria = prompt("Introduzca nota de la parte teórica: ");
+                        if (isNaN(teoria)) {
+                            alert("No es un numero");
+                        } else {
+                            if (teoria < 0) {
+                                alert("Error en la entrada, el valor ha de ser superior o igual a 0");
+                            }
+                            if (teoria > 10) {
+                                alert("Error en la entrada, el valor ha de ser inferior o igual a 10");
+                            }
+                        }
+
+                        if (teoria == '' || teoria == null) {
+                            alert("No ha introducido valor.")
+                        }
+                    } while (isNaN(teoria) || teoria < 0 || teoria > 10 || teoria == '' || teoria == null);
+
+                    do {
+                        actitud = prompt("Introduzca nota de actitud: ");
+                        if (isNaN(actitud)) {
+                            alert("No es un numero");
+                        } else {
+                            if (actitud < 0) {
+                                alert("Error en la entrada, el valor ha de ser superior o igual a 0");
+                            }
+                            if (actitud > 10) {
+                                alert("Error en la entrada, el valor ha de ser inferior o igual a 10");
+                            }
+                        }
+
+                        if (actitud == '' || actitud == null) {
+                            alert("No ha introducido valor.")
+                        }
+                    } while (isNaN(actitud) || actitud < 0 || actitud > 10 || actitud == '' || actitud == null);
+
+                    document.write(`<tr>`);
+                    document.write(`<td>${nombre}</td>`);
+                    document.write(`<td>${expediente}</td>`);
+                    document.write(`<td>${practica}</td>`);
+                    document.write(`<td>${teoria}</td>`);
+                    document.write(`<td>${actitud}</td>`);
+                    document.write(`<td>${parseFloat((practica * 0.5) + (teoria * 0.4) + (actitud * 0.1))}</td>`);
+                    document.write(`</tr>`);
                 }
-            } while (expediente.length != 5 || expediente == '' || expediente == null || expedienteCorrecto == false);
+                document.write(`</tbody></table>`);
 
 
-            do {
-                practica = prompt("Introduzca nota de la parte práctica: ");
-                if (isNaN(practica)) {
-                    alert("No es un numero");
-                } else {
-                    if (practica < 0) {
-                        alert("Error en la entrada, el valor ha de ser superior o igual a 0");
-                    }
-                    if (practica > 10) {
-                        alert("Error en la entrada, el valor ha de ser inferior o igual a 10");
-                    }
-                }
-
-                if (practica == '' || practica == null) {
-                    alert("No ha introducido valor.")
-                }
-            } while (isNaN(practica) || practica < 0 || practica > 10 || practica == '' || practica == null);
-
-            do {
-                teoria = prompt("Introduzca nota de la parte teórica: ");
-                if (isNaN(teoria)) {
-                    alert("No es un numero");
-                } else {
-                    if (teoria < 0) {
-                        alert("Error en la entrada, el valor ha de ser superior o igual a 0");
-                    }
-                    if (teoria > 10) {
-                        alert("Error en la entrada, el valor ha de ser inferior o igual a 10");
-                    }
-                }
-
-                if (teoria == '' || teoria == null) {
-                    alert("No ha introducido valor.")
-                }
-            } while (isNaN(teoria) || teoria < 0 || teoria > 10 || teoria == '' || teoria == null);
-
-            do {
-                actitud = prompt("Introduzca nota de actitud: ");
-                if (isNaN(actitud)) {
-                    alert("No es un numero");
-                } else {
-                    if (actitud < 0) {
-                        alert("Error en la entrada, el valor ha de ser superior o igual a 0");
-                    }
-                    if (actitud > 10) {
-                        alert("Error en la entrada, el valor ha de ser inferior o igual a 10");
-                    }
-                }
-
-                if (actitud == '' || actitud == null) {
-                    alert("No ha introducido valor.")
-                }
-            } while (isNaN(actitud) || actitud < 0 || actitud > 10 || actitud == '' || actitud == null);
-
-            document.write(`<tr>`);
-            document.write(`<td>${nombre}</td>`);
-            document.write(`<td>${expediente}</td>`);
-            document.write(`<td>${practica}</td>`);
-            document.write(`<td>${teoria}</td>`);
-            document.write(`<td>${actitud}</td>`);
-            document.write(`<td>${parseFloat((practica * 0.5) + (teoria * 0.4) + (actitud * 0.1))}</td>`);
-            document.write(`</tr>`);
-        }
-        document.write(`</tbody></table>`);
-
-
-    </script>
-</body>
-
+            </script>
+            <footer>
+                <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+                <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+                </a>
+                <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+                <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+                <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+            </footer>
+    </body>
 </html>

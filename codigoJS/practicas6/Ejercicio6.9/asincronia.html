@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asincronia</title>
+</head>
+
+<body>
+    <script>
+        /*'use strict'*/
+        /*let miError=new Error("El número es incorrecto");
+        let x=prompt("Introduce un número entre 0 y 10:");
+        if(x>=0 && x<=10){
+            alert("Número correcto");
+        }
+        else{
+            throw miError;
+            x=prompt("Introduce un número entre 0 y 10:");
+        }*/
+        let miError2=new Error("Soy el error 2");
+        let miError=new Error("Soy el error 1");
+        try {
+            let x=prompt("Introduce un número entre 0 y 10:");
+            if (x >= 0 && x <= 10) {
+                throw miError2;
+            } else {
+                throw miError;
+            }
+        } catch (err) {
+            err=prompt("Introduce un número entre 0 y 10:");
+        } finally{
+            alert("Aparezco siempre porque estoy en el finally");
+        }
+    </script>
+</body>
+
+</html>

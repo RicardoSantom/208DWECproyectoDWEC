@@ -1,25 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
 
-<body>
-    <script>
-        function cuentaAtras (numero){
-            //base case
-            if (numero === 0) {
-                return 0;
+    <body>
+        <script>
+            function cuentaAtras(numero) {
+                //base case
+                if (numero === 0) {
+                    return 0;
+                }
+                console.log(numero);
+                return cuentaAtras(numero - 1);
             }
-            console.log(numero);
-            return cuentaAtras(numero - 1);
-        };
-        console.log(cuentaAtras(5)) // 5, 4, 3, 2, 1
-    </script>
-</body>
-
+            ;
+            console.log(cuentaAtras(5)) // 5, 4, 3, 2, 1
+        </script>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>

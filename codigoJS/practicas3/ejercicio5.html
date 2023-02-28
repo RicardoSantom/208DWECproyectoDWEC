@@ -1,59 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        td,
-        th {
-            border: 1px black solid;
-            border-collapse: collapse;
-            width: 80px;
-            height: 80px;
-        }
-
-        .falso {
-            background-color: dimgray;
-        }
-
-        .verdadero {
-            background-color: aquamarine;
-        }
-    </style>
-</head>
-
-<body>
-    <script>
-        const TAM_FILAS = 10;
-        const TAM_COLUMNAS = 10;
-        let tablero = new Array(TAM_FILAS);
-        for (let index = 0; index < TAM_FILAS; index++) {
-            tablero[index] = new Array(TAM_COLUMNAS);
-            for (let j = 0; j < TAM_COLUMNAS; j++) {
-                tablero[index][j] = false;
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+            td,
+            th {
+                border: 1px black solid;
+                border-collapse: collapse;
+                width: 80px;
+                height: 80px;
             }
-        }
-        function funcionRicardo(tabla) {
-            document.write("<table><tbody>")
-            for (let k = 0; k < tabla.length; k++) {
-                document.write("<tr>")
-                for (let l = 0; l < tabla.length; l++) {
-                    if (tabla[k][l] != false) {
-                        document.write("<th class='falso'></th>");
-                    } else {
-                        document.write("<th class='verdadero'></th>");
-                    }
+
+            .falso {
+                background-color: dimgray;
+            }
+
+            .verdadero {
+                background-color: aquamarine;
+            }
+        </style>
+    </head>
+
+    <body>
+        <script>
+            const TAM_FILAS = 10;
+            const TAM_COLUMNAS = 10;
+            let tablero = new Array(TAM_FILAS);
+            for (let index = 0; index < TAM_FILAS; index++) {
+                tablero[index] = new Array(TAM_COLUMNAS);
+                for (let j = 0; j < TAM_COLUMNAS; j++) {
+                    tablero[index][j] = false;
                 }
-                document.write("</tr>")
             }
-            document.write("</tbody></table>")
-        }
-        funcionRicardo(tablero);
+            function funcionRicardo(tabla) {
+                document.write("<table><tbody>")
+                for (let k = 0; k < tabla.length; k++) {
+                    document.write("<tr>")
+                    for (let l = 0; l < tabla.length; l++) {
+                        if (tabla[k][l] != false) {
+                            document.write("<th class='falso'></th>");
+                        } else {
+                            document.write("<th class='verdadero'></th>");
+                        }
+                    }
+                    document.write("</tr>")
+                }
+                document.write("</tbody></table>")
+            }
+            funcionRicardo(tablero);
 
-    </script>
-</body>
-
+        </script>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>

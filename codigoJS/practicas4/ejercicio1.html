@@ -1,65 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
 
-<body>
-    <!--1.Crea una función para detectar palíndromos. La función recibirá un texto y devolverá verdadero o falso 
-        en función de si el texto es o no es palíndromo. Hay que tener en cuenta que se deben ignorar los signos 
-        de puntuación, espacios, interrogaciones, paréntesis, etc., también se ignoran tildes y diéresis y no se 
-        distingue entre mayúsculas y minúsculas.-->
-    <script>
-        let texto = prompt("Introduzca posible palindromo");
-        let textoCopia = "";
+    <body>
+        <!--1.Crea una función para detectar palíndromos. La función recibirá un texto y devolverá verdadero o falso 
+            en función de si el texto es o no es palíndromo. Hay que tener en cuenta que se deben ignorar los signos 
+            de puntuación, espacios, interrogaciones, paréntesis, etc., también se ignoran tildes y diéresis y no se 
+            distingue entre mayúsculas y minúsculas.-->
+        <script>
+            let texto = prompt("Introduzca posible palindromo");
+            let textoCopia = "";
 
-        let textoMinusculas = texto.toLowerCase();
-        texto.trim();
-        do {
-            textoCopia = textoMinusculas;
-            textoMinusculas = textoMinusculas.replace("á", "a");
-            textoMinusculas = textoMinusculas.replace("é", "e");
-            textoMinusculas = textoMinusculas.replace("í", "i");
-            textoMinusculas = textoMinusculas.replace("ó", "o");
-            textoMinusculas = textoMinusculas.replace("ú", "u");
-            textoMinusculas = textoMinusculas.replace("à", "a");
-            textoMinusculas = textoMinusculas.replace("è", "e");
-            textoMinusculas = textoMinusculas.replace("í", "i");
-            textoMinusculas = textoMinusculas.replace("ó", "o");
-            textoMinusculas = textoMinusculas.replace("ù", "u");
-            //textoMinusculas = textoMinusculas.replace(/,~.\$%&\?¿Ç/,"");
-        } while (textoMinusculas != textoCopia);
-        function esPalidroma(textoMinusculas) {
-            let textoReverso = "", minusculasCopia = textoMinusculas;
-            textoMinusculas = "";
+            let textoMinusculas = texto.toLowerCase();
+            texto.trim();
+            do {
+                textoCopia = textoMinusculas;
+                textoMinusculas = textoMinusculas.replace("á", "a");
+                textoMinusculas = textoMinusculas.replace("é", "e");
+                textoMinusculas = textoMinusculas.replace("í", "i");
+                textoMinusculas = textoMinusculas.replace("ó", "o");
+                textoMinusculas = textoMinusculas.replace("ú", "u");
+                textoMinusculas = textoMinusculas.replace("à", "a");
+                textoMinusculas = textoMinusculas.replace("è", "e");
+                textoMinusculas = textoMinusculas.replace("í", "i");
+                textoMinusculas = textoMinusculas.replace("ó", "o");
+                textoMinusculas = textoMinusculas.replace("ù", "u");
+                //textoMinusculas = textoMinusculas.replace(/,~.\$%&\?¿Ç/,"");
+            } while (textoMinusculas != textoCopia);
+            function esPalidroma(textoMinusculas) {
+                let textoReverso = "", minusculasCopia = textoMinusculas;
+                textoMinusculas = "";
 
-            for (let index = 0; index < minusculasCopia.length; index++) {
-                if (minusculasCopia.charAt(index) != " ") {
-                    textoMinusculas += minusculasCopia.charAt(index);
-                }
-            }
-
-            for (let index = textoMinusculas.length; index >= 0; index--) {
-                if (textoMinusculas.charAt(index) != " ") {
-                    textoReverso += textoMinusculas.charAt(index);
+                for (let index = 0; index < minusculasCopia.length; index++) {
+                    if (minusculasCopia.charAt(index) != " ") {
+                        textoMinusculas += minusculasCopia.charAt(index);
+                    }
                 }
 
-            }
-            if (textoMinusculas == textoReverso) {
-                return document.write(`<p>La palabra ${texto} SI es Palindroma </p>`);
-            }
-            else {
-                return document.write(`<p>La palabra ${texto} NO es Palindroma </p>`);
-            }
+                for (let index = textoMinusculas.length; index >= 0; index--) {
+                    if (textoMinusculas.charAt(index) != " ") {
+                        textoReverso += textoMinusculas.charAt(index);
+                    }
 
-        }
-        esPalidroma(textoMinusculas);
+                }
+                if (textoMinusculas == textoReverso) {
+                    return document.write(`<p>La palabra ${texto} SI es Palindroma </p>`);
+                } else {
+                    return document.write(`<p>La palabra ${texto} NO es Palindroma </p>`);
+                }
 
-    </script>
-</body>
+            }
+            esPalidroma(textoMinusculas);
 
+        </script>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>

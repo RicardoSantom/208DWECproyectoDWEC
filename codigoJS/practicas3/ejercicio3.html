@@ -1,100 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ejercicio 3 práctica3PDF</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ejercicio 3 práctica3PDF</title>
+    </head>
 
-<body>
-    <!--Queremos realizar una aplicación web que pida al usuario un nombre y una contraseña. 
-        El nombre de usuario solo puede estar formado por letras minúsculas y números, de otro modo, 
-        indicaremos el error y pediremos de nuevo el nombre. Loque validaremos de la contraseña es que 
-        al menos tenga un elemento de los siguientes:
-        1) una letra mayúscula
-        2) una letra minúscula
-        3) un número
-        4) un carácter que no sea ni letra ni número
-        Aunque sería más fácil resolver esta práctica con expresiones regulares, 
-        lo haremos sin ellas para practicar con los strings.
-        Si la contraseña no cumple lo indicado en el punto anterior, pediremos al usuario que la indique de nuevo.
-         Cuando lo cumpla, indicaremos con un mensaje que se ha almacenado correctamente la información. 
-         Ante cualquier cancelación en los cuadros, la aplicación termina. Lo indicaremos con un mensaje.-->
-    <script>
-        let minuscula = false;
-        let numero = false;
-        let caracter;
-        let caracter2;
-        let mayuscula, caracterespecial = false;
-        let minusculas = "abcdefghijklmnñopqrstuvwxyz";
-        let mayusculas = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-        let numeros = "0123456789";
+    <body>
+        <!--Queremos realizar una aplicación web que pida al usuario un nombre y una contraseña. 
+            El nombre de usuario solo puede estar formado por letras minúsculas y números, de otro modo, 
+            indicaremos el error y pediremos de nuevo el nombre. Loque validaremos de la contraseña es que 
+            al menos tenga un elemento de los siguientes:
+            1) una letra mayúscula
+            2) una letra minúscula
+            3) un número
+            4) un carácter que no sea ni letra ni número
+            Aunque sería más fácil resolver esta práctica con expresiones regulares, 
+            lo haremos sin ellas para practicar con los strings.
+            Si la contraseña no cumple lo indicado en el punto anterior, pediremos al usuario que la indique de nuevo.
+             Cuando lo cumpla, indicaremos con un mensaje que se ha almacenado correctamente la información. 
+             Ante cualquier cancelación en los cuadros, la aplicación termina. Lo indicaremos con un mensaje.-->
+        <script>
+            let minuscula = false;
+            let numero = false;
+            let caracter;
+            let caracter2;
+            let mayuscula, caracterespecial = false;
+            let minusculas = "abcdefghijklmnñopqrstuvwxyz";
+            let mayusculas = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
+            let numeros = "0123456789";
 
-        do {
-            let nombre = prompt("Introduzca el nombre de usuario: (Minusculas y numeros)");
-            if (nombre == null) {
-                alert("Se ha cancelado el juego.");
-                break;
-            } else {
-                for (let index = 0; index < nombre.length; index++) {
-                    caracter = nombre.charAt(index);
-                    if (minusculas.includes(caracter)) {
-                        minuscula = true;
+            do {
+                let nombre = prompt("Introduzca el nombre de usuario: (Minusculas y numeros)");
+                if (nombre == null) {
+                    alert("Se ha cancelado el juego.");
+                    break;
+                } else {
+                    for (let index = 0; index < nombre.length; index++) {
+                        caracter = nombre.charAt(index);
+                        if (minusculas.includes(caracter)) {
+                            minuscula = true;
+                        }
+                        if (numeros.includes(caracter)) {
+                            numero = true;
+                        }
                     }
-                    if (numeros.includes(caracter)) {
-                        numero = true;
+                    if (minuscula == false) {
+                        alert("No ha introducido letra minúscula.")
+                    }
+                    if (numero == false) {
+                        alert("No ha introducido número.")
                     }
                 }
-                if (minuscula == false) {
-                    alert("No ha introducido letra minúscula.")
+                if (!minuscula || !numero) {
+                    alert("Error en el formato, requerido = [A-Za-z0-9[*]]");
                 }
-                if (numero == false) {
-                    alert("No ha introducido número.")
-                }
-            }
-            if (!minuscula || !numero) {
-                alert("Error en el formato, requerido = [A-Za-z0-9[*]]");
-            }
-        } while (!minuscula || !numero);
+            } while (!minuscula || !numero);
 
-        do {
-            let contrasena = prompt("Introduzca la contraseña(Requeridos al menos: 1a letra mayúscula,\n" +
-                "1a letra minúscula, 1 número y 1 caracter especial) : ");
-            if (contrasena == null) {
-                alert("Se ha cancelado el juego");
-                break;
-            } else {
-                minuscula = false;
-                numero = false;
-                mayuscula = false;
-                caracterespecial = false;
-                for (let index2 = 0; index2 < contrasena.length; index2++) {
-                    caracter2 = contrasena.charAt(index2);
-                    if (minusculas.includes(caracter2)) {
-                        minuscula = true;
-                    }
-                    if (numeros.includes(caracter2)) {
-                        numero = true;
-                    }
-                    if (mayusculas.includes(caracter2)) {
-                        mayuscula = true;
-                    }
-                    if (minusculas.includes(caracter2) == false && mayusculas.includes(caracter2) == false && numeros.includes(caracter2) == false) {
-                        caracterespecial = true;
+            do {
+                let contrasena = prompt("Introduzca la contraseña(Requeridos al menos: 1a letra mayúscula,\n" +
+                        "1a letra minúscula, 1 número y 1 caracter especial) : ");
+                if (contrasena == null) {
+                    alert("Se ha cancelado el juego");
+                    break;
+                } else {
+                    minuscula = false;
+                    numero = false;
+                    mayuscula = false;
+                    caracterespecial = false;
+                    for (let index2 = 0; index2 < contrasena.length; index2++) {
+                        caracter2 = contrasena.charAt(index2);
+                        if (minusculas.includes(caracter2)) {
+                            minuscula = true;
+                        }
+                        if (numeros.includes(caracter2)) {
+                            numero = true;
+                        }
+                        if (mayusculas.includes(caracter2)) {
+                            mayuscula = true;
+                        }
+                        if (minusculas.includes(caracter2) == false && mayusculas.includes(caracter2) == false && numeros.includes(caracter2) == false) {
+                            caracterespecial = true;
+                        }
                     }
                 }
-            }
-            if (!minuscula || !mayuscula || !numero || !caracterespecial || contrasena.length != 8) {
-                alert("Error en el formato, requerido = [A-Za-z0-9[*]]");
-            }
-            else{
-                alert("Información corréctamente almacenada.")
-            }
-        } while (!minuscula || !mayuscula || !numero || !caracterespecial || contrasena.length != 8);
-        
-    </script>
-</body>
+                if (!minuscula || !mayuscula || !numero || !caracterespecial || contrasena.length != 8) {
+                    alert("Error en el formato, requerido = [A-Za-z0-9[*]]");
+                } else {
+                    alert("Información corréctamente almacenada.")
+                }
+            } while (!minuscula || !mayuscula || !numero || !caracterespecial || contrasena.length != 8);
 
+        </script>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>

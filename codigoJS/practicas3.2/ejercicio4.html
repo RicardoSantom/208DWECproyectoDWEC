@@ -1,227 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
-    td,
-    th {
-        border: 1px black solid;
-        border-collapse: collapse;
-        width: 80px;
-        height: 80px;
-    }
-
-    .verdadero {
-        background-color: dimgray;
-    }
-
-    .falso,
-    .mina {
-        background-color: aquamarine;
-    }
-
-    .mina:hover {
-        color: yellow;
-        font-size: xx-large;
-    }
-
-    .alrededor {
-        background-color: red;
-    }
-</style>
-
-<body>
-    <!--Crear una aplicación web que muestre un mapa del popular indiceuegos buscaminas en el que aparezcan las minas
-        dibuindiceadas y también que se indique en las Casillas sin minas,las minas que hay alrededor.Hacerlo de forma
-        modular de manera que dividamos la aplicación en una serie de funciones.Concretamente recomendaremos: a.Una
-        función que cree el tablero de las medidas que le pasemos. b.Una función a la que le pasaremos el tablero
-        buscaminas (sería un array de 2 dimensiones) y coloque en él de manera aleatoria las minas. c.Otra función que
-        recorra el tablero marcando en cada casilla las minas que hay alrededor.Esta podría dividirse en dos, siendo una
-        más sencilla la que recibe el array del tablero, una posición en ély devuelve las minas alrededor de esa
-        posición. La función principal simplemente invoca a esa segunda recorriendo cada casilla. d.Finalmente, una
-        tercerafunción que dibuindicee el tablero en una página web. Se pedirá al usuario el tamaño del tablero y las
-        minas a colocar. Debemos controlar que el númerode minas no sea mayor que el número de casillas del tablero.-->
-    <script>
-        let filas, columnas, minas;
-        do {
-            filas = prompt("Introduzca número de filas para tablero buscaminas");
-        } while (isNaN(filas) || filas <= 0 || filas == null);
-
-        do {
-            columnas = prompt("Introduzca número de columnas para tablero buscaminas");
-        } while (isNaN(columnas) || columnas <= 0 || columnas == null);
-
-        do {
-            minas = prompt("¿Cuántas minas desea colocar?");
-        } while (isNaN(minas) || minas > (filas * columnas) || minas == null);
-
-        let arrayTablero = new Array(filas);
-        function crearTablero(filas, columnas) {
-            for (let index = 0; index < filas; index++) {
-                arrayTablero[index] = new Array(columnas);
-                for (let indice = 0; indice < columnas; indice++) {
-                    arrayTablero[index][indice] = false;
-                }
-            }
-            return arrayTablero;
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
+    <style>
+        td,
+        th {
+            border: 1px black solid;
+            border-collapse: collapse;
+            width: 80px;
+            height: 80px;
         }
 
-
-
-        function colocarMinas(arrayTablero, filas, columnas, minas) {
-            let aleatorio1 = parseInt(Math.random() * filas);
-            let aleatorio2 = parseInt(Math.random() * columnas);
-            let contador = 0;
-
-            while (contador < minas) {
-                if (arrayTablero[aleatorio1][aleatorio2] == false) {
-                    arrayTablero[aleatorio1][aleatorio2] = true;
-                    contador++;
-                } else {
-                    aleatorio1 = parseInt(Math.random() * filas);
-                    aleatorio2 = parseInt(Math.random() * columnas);
-                }
-            }
-            return arrayTablero
+        .verdadero {
+            background-color: dimgray;
         }
 
-        function buscaMinas(arrayTablero, filas, columnas) {
-            for (let index = 0; index < filas; index++) {
-                for (let indice = 0; indice < columnas; indice++) {
+        .falso,
+        .mina {
+            background-color: aquamarine;
+        }
 
-                    switch (arrayTablero[index][indice]) {
-                        case arrayTablero[index][0] == true:
-                            if (arrayTablero[index-1][0] == false) {
-                                arrayTablero[index-1][0] = "alrededor";
-                            }
-                            break;
+        .mina:hover {
+            color: yellow;
+            font-size: xx-large;
+        }
 
-                        default:
-                            break;
+        .alrededor {
+            background-color: red;
+        }
+    </style>
+
+    <body>
+        <!--Crear una aplicación web que muestre un mapa del popular indiceuegos buscaminas en el que aparezcan las minas
+            dibuindiceadas y también que se indique en las Casillas sin minas,las minas que hay alrededor.Hacerlo de forma
+            modular de manera que dividamos la aplicación en una serie de funciones.Concretamente recomendaremos: a.Una
+            función que cree el tablero de las medidas que le pasemos. b.Una función a la que le pasaremos el tablero
+            buscaminas (sería un array de 2 dimensiones) y coloque en él de manera aleatoria las minas. c.Otra función que
+            recorra el tablero marcando en cada casilla las minas que hay alrededor.Esta podría dividirse en dos, siendo una
+            más sencilla la que recibe el array del tablero, una posición en ély devuelve las minas alrededor de esa
+            posición. La función principal simplemente invoca a esa segunda recorriendo cada casilla. d.Finalmente, una
+            tercerafunción que dibuindicee el tablero en una página web. Se pedirá al usuario el tamaño del tablero y las
+            minas a colocar. Debemos controlar que el númerode minas no sea mayor que el número de casillas del tablero.-->
+        <script>
+            let filas, columnas, minas;
+            do {
+                filas = prompt("Introduzca número de filas para tablero buscaminas");
+            } while (isNaN(filas) || filas <= 0 || filas == null);
+
+            do {
+                columnas = prompt("Introduzca número de columnas para tablero buscaminas");
+            } while (isNaN(columnas) || columnas <= 0 || columnas == null);
+
+            do {
+                minas = prompt("¿Cuántas minas desea colocar?");
+            } while (isNaN(minas) || minas > (filas * columnas) || minas == null);
+
+            let arrayTablero = new Array(filas);
+            function crearTablero(filas, columnas) {
+                for (let index = 0; index < filas; index++) {
+                    arrayTablero[index] = new Array(columnas);
+                    for (let indice = 0; indice < columnas; indice++) {
+                        arrayTablero[index][indice] = false;
                     }
-
-                    /*switch (arrayTablero[(filas - 1) - index][0]) {
-                        case true:
-                            if (arrayTablero[filas - index][0] == false) {
-                                arrayTablero[filas - index][0] = "alrededor";
-                            }
-                            break;
-
-                        default:
-                            break;
-                    }*/
-
                 }
-                /*arrayTablero[0][0] = true;
-                arrayTablero[filas-1][0] = true;
-                arrayTablero[0][columnas -1] = true;
-                arrayTablero[filas-1][columnas - 1]=true;*/
-                switch (arrayTablero[0][0]) {
-                    case true:
-                        if (arrayTablero[0][1] == false) {
-                            arrayTablero[0][1] = "alrededor";
-                        }
-                        if (arrayTablero[1][0] == false) {
-                            arrayTablero[1][0] = "alrededor";
-                        }
-                        if (arrayTablero[1][1] == false) {
-                            arrayTablero[1][1] = "alrededor";
-                        }
-                        break;
-                    default:
-                        break;
-                }
-
-                switch (arrayTablero[0][columnas - 1]) {
-                    case true:
-                        if (arrayTablero[0][columnas - 2] == false) {
-                            arrayTablero[0][columnas - 2] = "alrededor";
-                        }
-                        if (arrayTablero[1][columnas - 2] == false) {
-                            arrayTablero[1][columnas - 2] = "alrededor";
-                        }
-                        if (arrayTablero[1][columnas - 1] == false) {
-                            arrayTablero[1][columnas - 1] = "alrededor";
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-
-                switch (arrayTablero[filas - 1][0]) {
-                    case true:
-                        if (arrayTablero[filas - 1][1] == false) {
-                            arrayTablero[filas - 1][1] = "alrededor";
-                        }
-                        if (arrayTablero[filas - 2][0] == false) {
-                            arrayTablero[filas - 2][0] = "alrededor";
-                        }
-                        if (arrayTablero[filas - 2][1] == false) {
-                            arrayTablero[filas - 2][1] = "alrededor";
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-
-                switch (arrayTablero[filas - 1][columnas - 1]) {
-                    case true:
-                        if (arrayTablero[filas - 2][columnas - 1] == false) {
-                            arrayTablero[filas - 2][columnas - 1] = "alrededor";
-                        }
-                        if (arrayTablero[filas - 2][columnas - 2] == false) {
-                            arrayTablero[filas - 2][columnas - 2] = "alrededor";
-                        }
-                        if (arrayTablero[filas - 1][columnas - 2] == false) {
-                            arrayTablero[filas - 1][columnas - 2] = "alrededor";
-                        }
-                        break;
-
-                    default:
-                        break;
-                }
-
-
+                return arrayTablero;
             }
-            return arrayTablero;
-        }
 
-        function funcionRicardo(arrayTablero, filas, columnas) {
-            document.write("<table><tbody>")
-            for (let k = 0; k < filas; k++) {
-                document.write("<tr>")
-                for (let l = 0; l < columnas; l++) {
-                    if (arrayTablero[k][l] == false) {
-                        document.write("<th class='falso'></th>");
+
+
+            function colocarMinas(arrayTablero, filas, columnas, minas) {
+                let aleatorio1 = parseInt(Math.random() * filas);
+                let aleatorio2 = parseInt(Math.random() * columnas);
+                let contador = 0;
+
+                while (contador < minas) {
+                    if (arrayTablero[aleatorio1][aleatorio2] == false) {
+                        arrayTablero[aleatorio1][aleatorio2] = true;
+                        contador++;
                     } else {
-                        if (arrayTablero[k][l] == "alrededor") {
-                            document.write("<th class='alrededor'></th>");
-                        } else {
-                            document.write("<th class='mina'>X</th>");
-                        }
-
+                        aleatorio1 = parseInt(Math.random() * filas);
+                        aleatorio2 = parseInt(Math.random() * columnas);
                     }
                 }
-                document.write("</tr>")
+                return arrayTablero
             }
 
-            document.write("</tbody></table>")
-        }
+            function buscaMinas(arrayTablero, filas, columnas) {
+                for (let index = 0; index < filas; index++) {
+                    for (let indice = 0; indice < columnas; indice++) {
+
+                        switch (arrayTablero[index][indice]) {
+                            case arrayTablero[index][0] == true:
+                                if (arrayTablero[index - 1][0] == false) {
+                                    arrayTablero[index - 1][0] = "alrededor";
+                                }
+                                break;
+
+                            default:
+                                break;
+                        }
+
+                        /*switch (arrayTablero[(filas - 1) - index][0]) {
+                         case true:
+                         if (arrayTablero[filas - index][0] == false) {
+                         arrayTablero[filas - index][0] = "alrededor";
+                         }
+                         break;
+                         
+                         default:
+                         break;
+                         }*/
+
+                    }
+                    /*arrayTablero[0][0] = true;
+                     arrayTablero[filas-1][0] = true;
+                     arrayTablero[0][columnas -1] = true;
+                     arrayTablero[filas-1][columnas - 1]=true;*/
+                    switch (arrayTablero[0][0]) {
+                        case true:
+                            if (arrayTablero[0][1] == false) {
+                                arrayTablero[0][1] = "alrededor";
+                            }
+                            if (arrayTablero[1][0] == false) {
+                                arrayTablero[1][0] = "alrededor";
+                            }
+                            if (arrayTablero[1][1] == false) {
+                                arrayTablero[1][1] = "alrededor";
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+
+                    switch (arrayTablero[0][columnas - 1]) {
+                        case true:
+                            if (arrayTablero[0][columnas - 2] == false) {
+                                arrayTablero[0][columnas - 2] = "alrededor";
+                            }
+                            if (arrayTablero[1][columnas - 2] == false) {
+                                arrayTablero[1][columnas - 2] = "alrededor";
+                            }
+                            if (arrayTablero[1][columnas - 1] == false) {
+                                arrayTablero[1][columnas - 1] = "alrededor";
+                            }
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    switch (arrayTablero[filas - 1][0]) {
+                        case true:
+                            if (arrayTablero[filas - 1][1] == false) {
+                                arrayTablero[filas - 1][1] = "alrededor";
+                            }
+                            if (arrayTablero[filas - 2][0] == false) {
+                                arrayTablero[filas - 2][0] = "alrededor";
+                            }
+                            if (arrayTablero[filas - 2][1] == false) {
+                                arrayTablero[filas - 2][1] = "alrededor";
+                            }
+                            break;
+
+                        default:
+                            break;
+                    }
+
+                    switch (arrayTablero[filas - 1][columnas - 1]) {
+                        case true:
+                            if (arrayTablero[filas - 2][columnas - 1] == false) {
+                                arrayTablero[filas - 2][columnas - 1] = "alrededor";
+                            }
+                            if (arrayTablero[filas - 2][columnas - 2] == false) {
+                                arrayTablero[filas - 2][columnas - 2] = "alrededor";
+                            }
+                            if (arrayTablero[filas - 1][columnas - 2] == false) {
+                                arrayTablero[filas - 1][columnas - 2] = "alrededor";
+                            }
+                            break;
+
+                        default:
+                            break;
+                    }
 
 
-        console.log(arrayTablero);
-        crearTablero(filas, columnas);
-        colocarMinas(arrayTablero, filas, columnas, minas);
-        buscaMinas(arrayTablero, filas, columnas);
-        funcionRicardo(arrayTablero, filas, columnas);
-    </script>
-</body>
+                }
+                return arrayTablero;
+            }
 
+            function funcionRicardo(arrayTablero, filas, columnas) {
+                document.write("<table><tbody>")
+                for (let k = 0; k < filas; k++) {
+                    document.write("<tr>")
+                    for (let l = 0; l < columnas; l++) {
+                        if (arrayTablero[k][l] == false) {
+                            document.write("<th class='falso'></th>");
+                        } else {
+                            if (arrayTablero[k][l] == "alrededor") {
+                                document.write("<th class='alrededor'></th>");
+                            } else {
+                                document.write("<th class='mina'>X</th>");
+                            }
+
+                        }
+                    }
+                    document.write("</tr>")
+                }
+
+                document.write("</tbody></table>")
+            }
+
+
+            console.log(arrayTablero);
+            crearTablero(filas, columnas);
+            colocarMinas(arrayTablero, filas, columnas, minas);
+            buscaMinas(arrayTablero, filas, columnas);
+            funcionRicardo(arrayTablero, filas, columnas);
+        </script>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>

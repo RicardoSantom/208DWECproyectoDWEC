@@ -1,34 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+    </head>
 
-<body>
-    <!--Crea un script que pida una frase al usuario y se la muestre\n
-         con la primera letra de cada palabra en mayúsculas.-->
-    <script>
-        let controlador = false;
-        let frase = prompt("Introduzca una frase: ");
-        let fraseTrim = frase.trim();
-        let numero = parseInt(fraseTrim);
-        let palabras = fraseTrim.split(" ");
-        if (frase == undefined || frase == "") {
-            document.write("Formato incorrecto.");
-        } else {
-            controlador = true;
-            for (let indice in palabras) {
-                if (palabras[indice] != '') {
-                    palabras[indice] = palabras[indice][0].toUpperCase() + palabras[indice].substr(1);
+    <body>
+        <!--Crea un script que pida una frase al usuario y se la muestre\n
+             con la primera letra de cada palabra en mayúsculas.-->
+        <script>
+            let controlador = false;
+            let frase = prompt("Introduzca una frase: ");
+            let fraseTrim = frase.trim();
+            let numero = parseInt(fraseTrim);
+            let palabras = fraseTrim.split(" ");
+            if (frase == undefined || frase == "") {
+                document.write("Formato incorrecto.");
+            } else {
+                controlador = true;
+                for (let indice in palabras) {
+                    if (palabras[indice] != '') {
+                        palabras[indice] = palabras[indice][0].toUpperCase() + palabras[indice].substr(1);
+                    }
                 }
+                document.write(palabras.join(" "));
             }
-            document.write(palabras.join(" "));
-        }
-    </script>
-</body>
-
+        </script>
+        <footer>
+            <p>2022-23  IES LOS SAUCES. <a href="http://daw208.ieslossauces.es/index.html" id="enlacePrincipal" title="Enlace a Index Principal">Ricardo Santiago Tomé</a> © Todos los derechos reservados</p>
+            <a href="https://github.com/RicardoSantom" target="blank" id="github" title="RicardoSantom en GitHub">
+            </a>
+            <a href="https://www.linkedin.com/in/ricardo-santiago-tom%C3%A9/" id="linkedin" title="Ricardo Santiago Tomé en Linkedim" target="_blank"></a>
+            <a href="http://daw208.ieslossauces.es/doc/curriculumRicardo.pdf" class="material-icons" title="Curriculum Vitae Ricardo Santiago Tomé" target="_blank" id="curriculum"><span class="material-icons md-18">face</span></a>
+            <a href="http://daw208.ieslossauces.es/208DWECproyectoDWEC/indexDWEC.html" id="enlaceSecundario" title="Enlace a Index Proyecto Tema3">Index Proyecto DWEC</a>
+        </footer>
+    </body>
 </html>
