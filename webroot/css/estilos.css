@@ -14,10 +14,16 @@ body{
     overflow-x: hidden;
     position:relative;
 }
+main{
+    height: 500px;
+}
 main,article{
     width: 98%;
     margin: 0 auto;
     position: relative;
+}
+#article{
+    height: 100px;
 }
 header{
     height: 6em;

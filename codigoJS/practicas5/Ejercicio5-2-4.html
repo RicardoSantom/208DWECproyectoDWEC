@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .invisible {
+            color: transparent;
+        }
+
+        .visible {
+            clear: both;
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <!--Crea una página que muestre una lista de palabras(unas 10).
+        Las palabras irán apareciendo de una en una cada segundo.
+        Pasados 3 segundos, le preguntaremos al usuario si quiere 
+        que la lista de palabras aparezca ordenada alfabéticamente. 
+        Si acepta la sugerencia, reordena las palabras.-->
+    <ul id="s1">
+        <li class="invisible">Galadriel</li>
+        <li class="invisible">Gandalf</li>
+        <li class="invisible">Aragorn</li>
+        <li class="invisible">Arwen</li>
+        <li class="invisible">Elrond</li>
+        <li class="invisible">Légolas</li>
+        <li class="invisible">Gimli</li>
+        <li class="invisible">Frodo</li>
+        <li class="invisible">Bilbo</li>
+        <li class="invisible">Sam</li>
+    </ul>
+    <script>
+        window.addEventListener("load", intervalo);
+        var contador = 0;
+        var lista = document.getElementsByClassName("invisible");
+        var longitud = lista.length;
+        var intervalo = setInterval(() => {
+            lista[0].removeAttribute("class");
+            contador++;
+            if (contador == longitud) {
+                clearInterval(intervalo);
+            }
+        }, 1000)
+
+
+
+        function ordenarInsertar(arrayOriginal) {
+            var lista3 = document.getElementsByTagName("li");
+            arrayOriginal.sort((a,b)=>a.textContent.localeCompare(b.textContent,"es"));
+            var seccionUL = document.getElementById("s1")
+            seccionUL.innerHTML="";
+            for (let index = 0; index < arrayOriginal.length; index++) {
+                seccionUL.appendChild(arrayOriginal[index]);
+            }
+
+        }
+
+        var intervalo2 = setTimeout(() => {
+            var arrayLi = [];
+            var lista2 = document.getElementsByTagName("li");
+            for (const iterator of lista2) {
+                arrayLi.push(iterator);
+            }
+            var permiso = prompt("¿Quiere dar la vuelta a la lista?(SI/NO)");
+            if (permiso == "SI") {
+                ordenarInsertar(arrayLi);
+            }
+        }, (longitud * 1000) + 3000);
+    </script>
+</body>
+
+</html>

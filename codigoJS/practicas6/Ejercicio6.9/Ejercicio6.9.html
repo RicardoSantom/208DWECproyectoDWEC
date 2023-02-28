@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Ejercicio6-9</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+        h1 {
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            text-align: center;
+            color: teal;
+            font-size: 3em;
+        }
+
+        input {
+            width: 85%;
+            height: 56px;
+            font-size: 1.8em;
+            padding-left: .5em;
+            font-family: "Montserrat", sans-serif;
+            border-radius: 10px 0 0 10px;
+            border: 1px solid brown;
+            outline: none;
+            color: brown;
+            text-align: left;
+            float: left;
+        }
+
+        button {
+            width: 10%;
+            height: 60px;
+            font-size: 2em;
+            color: white;
+            font-family: "Montserrat", sans-serif;
+            font-weight: 700;
+            background-color: brown;
+            border-radius: 0 10px 10px 0;
+            border: none;
+            outline: none;
+        }
+
+        button:hover {
+            background-color: red;
+        }
+
+        li {
+            font-size: 2em;
+            color: teal;
+            font-family: "Montserrat", sans-serif;
+            margin-bottom: .5em;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            background-color: brown;
+            border-radius: 10px;
+            color: white;
+            padding-left: .5em;
+            margin-left: 1em;
+            padding-right: .5em;
+            font-size: 15px;
+            height: 20px;
+        }
+
+        a:hover {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!--E l botón ”+” añade tareas, pero solo si hay contenido en el cuadro.
+         Cada botón con el texto Quita la tarea correspondiente. 
+         En cuanto se añade una tarea este botón aparece en ella pa “quitar”
+          ra poder realizar esta labor. Al hacer click en una tarea en el nombre de la misma ,
+           Se quita de dónde está , , y pasa a ser la primera de la lista.
+            El único tipo de letra utilizado es Montserrat 400 y 700. Colores : teal , 
+            b ro wn y red . C ( letra de Google Font onsigue que las tareas se vayan grabando en u )
+             en grosores na cookie que dure una semana así al entrar de nuevo con el mismo navegador , 
+             veremos las tareas que habíamos añadido.-->
+    <h1>Lista de tareas</h1>
+    <form>
+        <div id="divEntrada">
+            <input id="nuevaTarea"  placeholder="Nueva tarea">
+            <button type=submit id="enviar" name="enviar">+</button>
+        </div>
+        <ul>
+        </ul>
+    </form>
+    <script defer src="Ejercicio6.9.js"></script>
+</body>
+
+</html>

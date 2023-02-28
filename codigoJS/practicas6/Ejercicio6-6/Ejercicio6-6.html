@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio6-6.</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            position: relative;
+        }
+        #capa1,#capa2{
+            height: 300px;
+            width: 450px;
+            border: 2px solid black;            
+            position: absolute;
+            font-size: 24px;
+            text-align: center;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        }
+        #capa1{
+            background-color: yellow;
+        }
+        #capa2{
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="capa1" draggable="true">Soy  al que arrastran</div>
+    <div id="capa2">Soy el destino</div>
+    <script defer src="Ejercicio6-6.js"></script>
+</body>
+</html>

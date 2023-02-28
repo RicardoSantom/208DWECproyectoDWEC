@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio6-7</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        header{
+            background-color: rgb(246, 170, 77);
+            color:white;
+            text-align:center;
+        }
+        main{
+            display:flex;
+            padding:20px;
+            gap:20px;
+        }
+        form *{
+            margin:1px;
+        }
+        form{
+            margin-left: 4rem;
+            align-items: center;
+        }
+        img{
+            height:200px;
+            width:200px;
+        }
+        #texto{
+            display:none;
+        }
+        .mostrar{
+            display:block;
+        }
+        #error{
+            background-color: red;
+            color:white;
+            display:none;
+        }
+        #areaTexto{
+            height:100px;
+            width:300px;
+        }
+        input,button,select{width: 12rem;}
+        input:hover,button:hover,select:hover{
+            box-shadow: 2px 2px 6px 6px  rgb(246, 170, 77);
+        }
+        label{
+            margin-right: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>INFORME INCIDENCIA</h1>
+    </header>
+    <main>
+        <div>
+            <img id="imagen" src="../img/factoria.png">
+        </div>
+        <form>
+            <label>Tipo de incidencia: </label>
+            <select id="seleccionValores">
+                <option value="Distribucion" selected>Distribución</option>
+                <option value="Oficina">Oficina</option>
+                <option value="Produccion">Producción</option>
+            </select>
+            <br>
+            <label>Número de serie: </label>
+            <input id="numeroSerie" placeholder="[0-9]{3}[A-Z]{4}[12A]">
+            <div id="error">Incorrecto</div>
+            <br>
+            <button id="botonDescripcion" type="button">Mostrar Descripción</button>
+            <div id="areaTexto">
+                <textarea id="texto" cols="37" rows="7"></textarea>
+            </div>
+            <br>
+            <button type=submit id="enviar" name="enviar">Enviar datos</button>
+        </form>
+    </main>
+    <script defer src="Ejercicio6-7.js"></script>
+</body>
+</html>

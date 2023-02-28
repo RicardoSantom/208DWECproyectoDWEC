@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    
+    <script>
+        /*var nombre="anónimo";
+        setTimeout(()=>nombre=prompt("Escribe tu nombre:"),5000);
+        console.log(nombre);*/
+
+        
+        var nombre="anónimo";
+        /*Objeto promesa*/
+        var miPromesa =new Promise(function(resolve,reject){
+            setTimeout(()=>{
+                nombre=prompt("Escribe tu nombre:");
+                if (nombre.length>4) {
+                resolve("La promesa se ha cumplido");
+                } else{
+                    reject(new Error("Formato no válido"));
+                }
+            },5000);
+        });
+
+        miPromesa.then((mensaje)=>{
+            console.log(mensaje);
+            console.log(nombre);
+        }).catch((error)=>{
+            console.log(error);
+        }).finally(()=>{
+            alert("FIN");
+        });
+
+    </script>
+</body>
+</html>
