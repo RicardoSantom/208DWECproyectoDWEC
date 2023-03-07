@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            position: absolute;
+            top: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                //formato json
+                let etiqueta = document.createElement("label");
+                etiqueta.textContent = "Elegir campo:";
+                etiqueta.setAttribute("name", "selector");
+                etiqueta.setAttribute("id", "selector");
+                etiqueta.setAttribute("for", "select");
+                document.body.insertAdjacentElement("afterbegin", etiqueta);
+                let select = document.createElement("select");
+
+                let opcionPais = document.createElement("option");
+                opcionPais.setAttribute("value", "COUNTRY");
+                opcionPais.textContent = "Pais";
+                select.insertBefore(opcionPais, select.children[0]);
+
+                let opcionCompania = document.createElement("option");
+                opcionCompania.setAttribute("value", "COMPANY");
+                opcionCompania.textContent = "Compañía";
+                select.insertBefore(opcionCompania, select.children[0]);
+
+                let opcionPrecio = document.createElement("option");
+                opcionPrecio.setAttribute("value", "PRICE");
+                opcionPrecio.textContent = "Precio";
+                select.insertBefore(opcionPrecio, select.children[0]);
+
+                let opcionAnyo = document.createElement("option");
+                opcionAnyo.setAttribute("value", "YEAR");
+                opcionAnyo.textContent = "Año";
+                select.insertBefore(opcionAnyo, select.children[0]);
+
+                let opcionVacia = document.createElement("option");
+                opcionVacia.setAttribute("value", "");
+                opcionVacia.textContent = "Seleccionar Campo";
+                select.insertBefore(opcionVacia, select.children[0]);
+
+                document.body.insertBefore(select, document.body.children[0]);
+
+
+                let cont = document.createElement("table");
+                let tbody = document.createElement("tbody");
+                let fichero = JSON.parse(this.responseText);
+                for (const iterator of fichero.CATALOG.CD) {
+                    let tr = document.createElement("tr");
+                    let td = document.createElement("td");
+                    let td2 = document.createElement("td");
+                    td.textContent = iterator.TITLE;
+                    td2.textContent = iterator.ARTIST;
+                    cont.appendChild(tr);
+                    tr.appendChild(td);
+                    tr.appendChild(td2);
+                    let tdMartir = document.createElement("td");
+                    select.addEventListener("change", comprobarValor);
+
+                    function comprobarValor(ev) {
+                        tdMartir.textContent=iterator[ev.target.value];
+                        /*switch (select.value) {
+                            case "vacia":
+                                tdMartir.textContent = "";
+                                break;
+                            case "pais":
+                                tdMartir.textContent = iterator.COUNTRY;
+                                break;
+                            case "compania":
+                                tdMartir.textContent = iterator.COMPANY;
+                                break;
+                            case "precio":
+                                tdMartir.textContent = iterator.PRICE;
+                                break;
+                            case "anyo":
+                                tdMartir.textContent = iterator.YEAR;
+                                break;
+
+                            default:
+                                tdMartir.textContent = "";
+                                break;
+                        }*/
+                    }
+                    tr.appendChild(tdMartir);
+                }
+                document.body.appendChild(cont);
+                //formato xml
+                /*let cont=document.createElement("div");
+                document.body.appendChild(cont);
+                let fichero=this.responseXML;
+                let titulos = fichero.getElementsByTagName("TITLE");
+                for(const iterator of titulos){
+                    let p=document.createElement("p");
+                    p.textContent=iterator.textContent;
+                    cont.appendChild(p);
+                }*/
+                /*cont.textContent=this.responseText;*/
+
+            }
+        }
+        xhr.open("GET", "catalogo.json", true);
+        xhr.send();
+    </script>
+</body>
+
+</html>
