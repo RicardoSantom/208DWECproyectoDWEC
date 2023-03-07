@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio7-1</title>
+</head>
+
+<body>
+    <!--La página https://randomuser.me/ Permite obtener datos aleatorios de personas pensando en que los desarrolladores y otros profesionales puedan utilizarlos en sus pruebas y test. Las instrucciones de la API de este servicio gratuito están en la url: https://randomuser.me/documentation hacer peticiones vía GET a la url: https://randomuser.me/api/ . . En todo caso la idea es Se pueden pasar para indicar cuántos usuarios aleatorios deseamos, el sexo, política de contraseñas, páginas, formato de respuesta, etc. En la página de documentación viene un ejemplo de la estructura JSON de las respuesta indicamos que es un objeto formado por dos propiedades: results e info. La primera es un array donde cada elemento lo forma un objeto con los datos del usuario aleatorio. La propiedad info contiene otros detalles entre los que destaca una s s. Como resumen emilla que permite repetir una petición con los mismos datos y datos de paginación. La aplicación mostrará la foto, nombre, apellido, email, dirección y estado al que pertenece el usuario. Cada vez que actualicemos la página se pedirá otro usuario.-->
+    <script>
+        let consultaNumero = prompt("¿Cuántas personas necesita?");
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let fichero = JSON.parse(this.responseText);
+                console.log(fichero.info.seed);
+                for (let index = 0; index < parseInt(consultaNumero); index++) {
+                    let bloquePersonal = document.createElement("div");
+                    let foto = document.createElement("img");
+                    let parrafoNombre = document.createElement("p");
+                    let parrafoApellido = document.createElement("p");
+                    let parrafoEmail = document.createElement("p");
+                    let parrafoDireccion = document.createElement("p");
+                    let parrafoEstado = document.createElement("p");
+                    document.body.appendChild(bloquePersonal);
+                    bloquePersonal.insertAdjacentElement("beforeend", parrafoNombre);
+                    bloquePersonal.insertAdjacentElement("beforeend", parrafoApellido);
+                    bloquePersonal.insertAdjacentElement("beforeend", parrafoEmail);
+                    bloquePersonal.insertAdjacentElement("beforeend", parrafoDireccion);
+                    bloquePersonal.insertAdjacentElement("beforeend", parrafoEstado);
+                    for (const iterator of fichero.results) {
+                        foto.setAttribute("src", iterator.picture.large);
+                        bloquePersonal.insertAdjacentElement("afterbegin", foto);
+                        parrafoNombre.textContent = "Nombre: " + iterator.name.first;
+                        parrafoApellido.textContent = "Apellido: " + iterator.name.last;
+                        parrafoEmail.textContent = "Email: " + iterator.email;
+                        parrafoDireccion.innerHTML = "Direccion:<br> Calle- " + iterator.location.street.name +
+                            "<br> Nº-" + iterator.location.street.number;
+                        parrafoEstado.textContent = "Estado: " + iterator.location.state;
+                        
+                    }                     
+                    
+                }
+            }
+        }
+        xhr.open("GET", ` https://randomuser.me/api/?results=${parseInt(consultaNumero)}`);
+        xhr.send();
+    </script>
+</body>
+
+</html>
