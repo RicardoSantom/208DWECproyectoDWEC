@@ -109,6 +109,9 @@ ol li a{
     color: #CCB3AF;
     font-size: 1.3rem;
 }
+ol li a:hover{
+    color: #005a9e;
+        }
 #github,#linkedin,#curriculum{
     text-decoration: none;
 }
